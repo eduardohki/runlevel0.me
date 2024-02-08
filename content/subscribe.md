@@ -1,7 +1,0 @@
-+++
-title = 'Subscribe'
-+++
-
-# Subscribe
-
-TODO
