@@ -13,10 +13,10 @@ I'm always continuously learning, and I find great joy when I'm able to elevate 
 knowledge and experience, be it by helping teams and businesses with my technical skills or
 by simply engaging with the community and paying it forward in the form of free mentoring.
 
-I'm not afraid of working with uncertainty and the unknown -- e.g. different technology stacks or
-problem areas -- and looking back, it was in these situations that I grew the most professionally.
-I tend to approach problems holistically and considering not only the technological aspects but
-also the human, organizational, and social aspects of every project.
+I'm not afraid of working with uncertainty and the unknown -- e.g. to tap into various technology
+stacks or problem areas -- and looking back, it was in these situations that I grew the most
+professionally. I tend to approach problems holistically and considering not only the technological
+aspects but also the human, organizational, and social aspects of every project.
 
 In recent times I found myself in love with the [Rust](https://www.rust-lang.org/) and
 [Elixir](https://elixir-lang.org/) programming languages, and a taste for the functional programming
