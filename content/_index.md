@@ -19,9 +19,9 @@ professionally. I tend to approach problems holistically and considering not onl
 aspects but also the human, organizational, and social aspects of every project.
 
 In recent times I found myself in love with the [Rust](https://www.rust-lang.org/) and
-[Elixir](https://elixir-lang.org/) programming languages, and a taste for the functional programming
-paradigm. I also employ [TypeScript](https://www.typescriptlang.org/) extensively in the context of
-AWS and Serverless.
+[Elixir](https://elixir-lang.org/) programming languages, and developed a taste for the functional
+programming paradigm. I also employ [TypeScript](https://www.typescriptlang.org/) extensively in the
+context of AWS and Serverless.
 
 Profiles: [LinkedIn](https://www.linkedin.com/in/eduardohki/), [GitHub](https://github.com/eduardohki/)
 
