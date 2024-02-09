@@ -35,7 +35,6 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4f5677", endColorstr="#202a58", GradientType=1);
     background-clip: text;
     background-size: cover;
-    -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -44,6 +43,8 @@
   }
 
   .title {
+    -webkit-text-fill-color: #222;
+    -moz-text-fill-color: #222;
     text-decoration: none;
     border: 0;
   }
@@ -168,12 +169,18 @@
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a2becc", endColorstr="#8cc2dd", GradientType=1);
       background-clip: text;
       background-size: cover;
-      -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       -moz-background-clip: text;
       -webkit-text-fill-color: transparent;
       -moz-text-fill-color: transparent;
       text-decoration: none;
+    }
+
+    .title {
+      -webkit-text-fill-color: #ddd;
+      -moz-text-fill-color: #ddd;
+      text-decoration: none;
+      border: 0;
     }
 
     code {
