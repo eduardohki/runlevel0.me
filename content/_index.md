@@ -9,18 +9,18 @@ I started my career in IT Infrastructure when I was 17, and after gaining a lot 
 in Monitoring, Log Management and then DevOps and Cloud over the years, I finally -- and perhaps
 naturally -- found myself on the Software side of things.
 
-I'm always continuously learning, and I find great joy when I'm able to elevate others with my
-knowledge and experience, be it by helping teams and businesses with my technical skills or
+I'm always continuously learning, and I find great joy when I'm able to use my knowledge and
+experience to elevate others, be it by helping teams and businesses with my technical skills or
 by simply engaging with the community and paying it forward in the form of free mentoring.
 
 I'm not afraid of working with uncertainty and the unknown -- e.g. to tap into various technology
 stacks or problem areas -- and looking back, it was in these situations that I grew the most
-professionally. I tend to approach problems holistically and considering not only the technological
-aspects but also the human, organizational, and social aspects of every project.
+professionally. I tend to approach problems holistically, considering not only the technological
+aspects but also the human, organizational and social facets of each solution.
 
 In recent times I found myself in love with the [Rust](https://www.rust-lang.org/) and
-[Elixir](https://elixir-lang.org/) programming languages, and developed a taste for the functional
-programming paradigm. I also employ [TypeScript](https://www.typescriptlang.org/) extensively in the
+[Elixir](https://elixir-lang.org/) programming languages, and developed a taste for functional
+programming. I also employ [TypeScript](https://www.typescriptlang.org/) extensively in the
 context of AWS and Serverless.
 
 Profiles: [LinkedIn](https://www.linkedin.com/in/eduardohki/), [GitHub](https://github.com/eduardohki/)
