@@ -10,4 +10,4 @@ date = "2024-02-08T10:20:02+01:00"
 tags = []
 +++
 
-This is a page about »My First Post«.
+Sorry, I'm still WIP!

@@ -4,4 +4,4 @@ title = 'Services'
 
 # Services
 
-TODO
+Sorry, this page is still WIP.
