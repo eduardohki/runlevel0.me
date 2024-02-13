@@ -13,7 +13,7 @@ I'm always continuously learning, and I find great joy when I'm able to use my k
 experience to elevate others, be it by helping teams and businesses with my technical skills or
 by simply engaging with the community and paying it forward in the form of free mentoring.
 
-I'm not afraid of working with uncertainty and the unknown -- e.g. to tap into various technology
+I'm not afraid of working with uncertainty and the unknown -- _e.g._ to tap into various technology
 stacks or problem areas -- and looking back, it was in these situations that I grew the most
 professionally. I tend to approach problems holistically, considering not only the technological
 aspects but also the human, organizational and social facets of each solution.

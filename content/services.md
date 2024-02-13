@@ -5,13 +5,13 @@ title = 'Services'
 # Services
 
 Are you interested in working with me? Just send me an email at <a href="mailto:&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#43;&#119;&#101;&#98;&#115;&#105;&#116;&#101;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;?subject=Service%20Inquiry">&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;</a>. 
-Do you want to discuss something else? Feel free to hit me up anyway.
+Do you want to discuss something else? Feel free to hit me up anyway!
 
 I can help you with:
 
 * __Developing Applications in the Cloud__: I have architected and developed _greenfield_ and _brownfield_ systems in the context of Containers, Serverless, Web Applications, REST APIs, Distributed Systems, Monoliths and Event-driven systems. I tend to be more on the backend side of the spectrum, but I can also work on the frontend when necessary.
 
-* __Migrating and Modernizing Applications on AWS__: I have a proven track record of migrations to AWS, from pre-existing on-premises applications, through database engine conversions, to large-scale migrations using the [AWS Migration Methodology](https://aws.amazon.com/cloud-migration/how-to-migrate/). I have also supported several teams in Modernizing their existing Applications on AWS by employing several Managed Services to enable world-class high-availability, improved Cloud costs and better productivity in general.
+* __Migrating and Modernizing Applications on AWS__: I have a proven track record of migrations to AWS, from pre-existing on-premises applications, through database engine conversions, to large-scale migrations using the [AWS Migration Methodology.](https://aws.amazon.com/cloud-migration/how-to-migrate/) I have also supported several teams in Modernizing their existing Applications on AWS by employing several Managed Services to enable world-class high-availability, improved Cloud costs and better productivity in general.
 
 * __Consulting__: I also offer support to companies in developing technical strategies, helping Software teams deliver faster and safer, collaboratively discussing software architecture improvements and building the bridge between technical and product teams.
 
@@ -34,7 +34,7 @@ _**Nagaraj Bhat**_, DevOps Tech Lead at [PPRO](https://www.ppro.com)
 
 <font size=3>:bulb: _The following excerpts were taken from former employer reference letters (which I am happy to provide upon request)_.</font>
 
-_**Sven Ramuschkat**_, founder of [tecRacer Group](https://www.tecracer.com/) - _October 2020_ (originally in German)
+_**Sven Ramuschkat**_, Founder of [tecRacer Group](https://www.tecracer.com/) - _October 2020_ (originally in German)
 
 > Mr. Hernacki was highly motivated right from the start and showed an extraordinarily high degree of initiative, motivation and collegiality. [...] His work results were always of very good quality, even with changing customer requirements and under sometimes difficult conditions. He was always up to the task, even under extreme time pressure and workload. He carried an outstanding and efficient teamwork.
 
