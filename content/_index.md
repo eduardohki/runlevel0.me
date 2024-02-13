@@ -28,4 +28,4 @@ Profiles: [LinkedIn](https://www.linkedin.com/in/eduardohki/), [GitHub](https://
 #### Do you want to hire me?
 
 Check out the [services]({{< ref "/services" >}}) page if you are interested to read about my services,
-past projects and testimonials. I'm open to any professional inquiries via email.
+past projects and references. I'm open to any professional inquiries via email.

@@ -14,11 +14,13 @@ enableRobotsTXT = true
 disableKinds = ["taxonomy"]
 ignoreErrors = ["error-disable-taxonomy"]
 
+enableEmoji = true
+
 # unsafe = true allows using HTML in markdown
-# [markup]
-# [markup.goldmark]
-# [markup.goldmark.renderer]
-# unsafe = true
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
 
 [permalinks]
 blog = "/blog/:slug/"
