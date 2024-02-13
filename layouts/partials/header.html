@@ -1,0 +1,11 @@
+<a href="{{ "" | relURL }}" class="title">
+  <h2>{{ .Site.Title }}</h2>
+</a>
+<nav>{{- partial "nav.html" . -}}</nav>
+{{ if not hugo.IsServer }}
+<script src="https://getinsights.io/js/insights.js"></script>
+<script>
+  insights.init('AZklKKe2O7L_qE6W');
+  insights.trackPages();
+</script>
+{{ end }}
