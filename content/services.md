@@ -4,16 +4,23 @@ title = 'Services'
 
 # Services
 
-Are you interested in working with me? Just send me an email at <a href="mailto:&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#43;&#119;&#101;&#98;&#115;&#105;&#116;&#101;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;?subject=Service%20Inquiry">&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;</a>. 
-Do you want to discuss something else? Feel free to hit me up anyway!
+Are you looking for expert guidance in cloud development and migration? I offer a range of services personalized to meet your needs:
 
-I can help you with:
+### Cloud Application Development
 
-* **Developing Applications in the Cloud**: I have architected and developed _greenfield_ and _brownfield_ systems in the context of Containers, Serverless, Web Applications, REST APIs, Distributed Systems, Monoliths, and Event-driven systems. I tend to focus more on the backend side of the spectrum, but I can also work on the frontend when necessary.
+I specialize in developing robust cloud-based applications tailored to your business needs. Whether it's building scalable web applications, RESTful APIs, or event-driven systems, I have the expertise to architect and develop solutions that drive business growth. My experience spans various technologies including Node.js, TypeScript, Python, and Rust.
 
-* **Migrating and Modernizing Applications on AWS**: I have a proven track record of migrations to AWS, from pre-existing on-premises applications, through database engine conversions, to large-scale migrations using the [AWS Migration Methodology](https://aws.amazon.com/cloud-migration/how-to-migrate/). I have also supported several teams in Modernizing their existing Applications on AWS by employing several Managed Services to enable world-class high-availability, improved Cloud costs, and better productivity in general.
+### AWS Migration and Modernization
 
-* **Consulting**: I also offer support to companies in developing technical strategies, helping Software teams deliver faster and safer, collaboratively discussing software architecture improvements, and building the bridge between technical and product teams.
+Navigating the complexities of AWS migration can be daunting. With a proven track record in migrating applications to AWS, I provide comprehensive support from pre-migration planning to post-migration optimization. Leveraging my experience with the [AWS Migration Methodology](https://aws.amazon.com/cloud-migration/how-to-migrate/), I ensure seamless transitions, improved scalability, and enhanced cost-efficiency. Additionally, I assist in modernizing existing applications on AWS, optimizing performance, and leveraging managed services for high availability and productivity.
+
+### Technical Consulting
+
+Need strategic guidance to accelerate your software development initiatives? I offer expert consulting services to help you formulate technical strategies, streamline development processes, and bridge the gap between technical and product teams. From software architecture improvements to fostering a culture of continuous learning, I'm dedicated to empowering your team for success.
+
+### Get in Touch
+
+Ready to take your projects to the next level? Reach out to discuss how I can support your goals and initiatives. Contact me at <a href="mailto:&&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;?subject=Consultation%20Request%20from%20Website">&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;</a> to schedule a consultation.
 
 ## References
 
