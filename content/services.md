@@ -8,7 +8,7 @@ Are you looking for expert guidance in cloud development and migration? I offer 
 
 ### Cloud Application Development
 
-I specialize in developing robust cloud-based applications tailored to your business needs. Whether it's building scalable web applications, RESTful APIs, or event-driven systems, I have the expertise to architect and develop solutions that drive business growth. My experience spans various technologies including Node.js, TypeScript, Python, and Rust.
+I specialize in developing robust cloud-based applications tailored to your business needs. Whether it's building scalable web applications, RESTful APIs, or event-driven systems, I have the expertise to architect and develop solutions that drive business growth. I have extensive experience across multiple roles and technologies, encompassing Developer, DevOps, Architect, and Team Lead positions, with expertise in AWS, IaC, CI/CD pipelines, and ecosystems such as Node.js, TypeScript, Rust, Python, and more.
 
 ### AWS Migration and Modernization
 
