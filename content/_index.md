@@ -3,6 +3,8 @@ title = 'Home'
 url = "/"
 +++
 
+![profile picture](/images/profile-picture.jpg "Hello") 
+
 Hey! I'm Eduardo, and I call myself a Software Engineer and AWS specialist.
 
 I started my career in IT Infrastructure when I was 17, and after gaining a lot of experience
