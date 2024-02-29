@@ -15,7 +15,7 @@ One of the biggest challenges for me was that usually these practices come from 
 
 Eventually I came across websites like [Dojo Consortium](https://dojoconsortium.org/docs/work-decomposition/) and [MinimumCD](https://minimumcd.org/minimumcd/), which allowed me to understand how and for what purpose these practices fit together. What remained for me was to understand how to implement them in practice and in the code, and I wanted to do this by applying [functional thinking](https://www.manning.com/books/grokking-simplicity).
 
-It was after coming across [this](https://alexis-lozano.com/hexagonal-architecture-in-rust-1/) excellent series of articles by *Alex Lozano* on Hexagonal Architecture, the final pieces fell into place.
+It was after coming across [this](https://alexis-lozano.com/hexagonal-architecture-in-rust-1/) excellent series of articles by *Alex Lozano* on Hexagonal Architecture in Rust, the final pieces fell into place.
 
 My aim in this series of posts is to present an example of how to apply DDD, TDD and Hexagonal Architecture in the context of an application written in TypeScript. Without further ado, let's go!
 
