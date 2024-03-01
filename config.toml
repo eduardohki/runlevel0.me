@@ -30,6 +30,9 @@ unsafe = true
 blog = "/blog/:slug/"
 
 [params]
+author = "Eduardo Hernacki"
+since = 2024
+
 # The "description" of your website. This is used in the meta data of your generated html.
 description = "Eduardo Hernacki"
 
