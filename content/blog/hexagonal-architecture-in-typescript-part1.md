@@ -9,7 +9,7 @@ tags = ['DDD', 'TDD', 'TypeScript']
 
 ## Introduction
 
-Since I started calling myself a developer a few years ago, I've been trying to understand how to best design software so that it fits in one's head and stays easy to change over time. In the meantime, I have heard of things like Domain-Driven Design (DDD), Test-Driven Development (TDD), and Clean/Onion/Hexagonal Architecture, but it was never easy for me to get it, nor had I someone showing me how those things work.
+Since I started calling myself a developer a few years ago, I've been trying to understand how to best design software so that it fits in one's head and stays easy to change over time. In the meantime, I have heard of things like Domain-Driven Design (DDD), Behavior-Driven Development (BDD), Test-Driven Development (TDD), and Clean/Onion/Hexagonal Architecture, but it was never easy for me to get it, nor had I someone showing me how those things work.
 
 One of the biggest challenges for me was that usually these practices come from the world of object-oriented languages like Java and C#, and many of the examples I've come across conflate these concepts and practices with object-oriented ones, sometimes even misleading one away from what it really is about (like assuming TDD requires mocks and testing each and every implementation detail). It all seemed over-complicated for me, and my gut feeling told me this was not a *skill* issue.
 
@@ -29,7 +29,7 @@ In other words, it is about *decoupling* the core application from all external 
 
 Here enters TDD: think about the ability to quickly test the whole application *before* committing your changes. Hexagonal Architecture optimizes for that. It allows you to have fearless control over of your code. This requires defining the features/use-cases before even starting to code.
 
-## Did I mention DDD?
+## Did I mention BDD?
 
 For this series I'm conceiving a fictional team building a Project Collaboration Platform from scratch. We neither know nor care where it will run, which database to use and so on.
 
@@ -278,7 +278,7 @@ export const createProject = (id: string, name: string): Project => {
 };
 ```
 
-Now our first scenario/use-case is implemented with all tests passing.
+Now our first scenario/use-case is implemented with all tests passing. If you look closely, you'll notice that these tests are effectively a runnable specification.
 
 The code written here can be found on [GitHub](https://github.com/eduardohki/project-collab-platform/tree/part-1).
 
