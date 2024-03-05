@@ -4,8 +4,13 @@ date = "2024-02-29T15:08:51+01:00"
 
 categories = ['Software Engineering']
 series = ['Hexagonal Architecture in TypeScript']
-tags = ['DDD', 'TDD', 'TypeScript']
+tags = ['BDD', 'TDD', 'TypeScript']
 +++
+
+This article is comprised of multiple parts:
+
+* Part 1: Introduction and First Use-Case
+* [Part 2: In-Memory Repository]({{< ref "hexagonal-architecture-in-typescript-part2.md" >}})
 
 ## Introduction
 
@@ -17,7 +22,7 @@ Eventually I came across websites like [Dojo Consortium](https://dojoconsortium.
 
 It was after coming across [this](https://alexis-lozano.com/hexagonal-architecture-in-rust-1/) excellent series of articles by *Alex Lozano* on Hexagonal Architecture in Rust, that the final pieces fell into place.
 
-My aim in this series of posts is to present an example of how to apply DDD, TDD and Hexagonal Architecture in the context of an application written in TypeScript. Without further ado, let's go!
+My aim in this series of posts is to present an example of how to apply BDD, TDD and Hexagonal Architecture in the context of an application written in TypeScript. Without further ado, let's go!
 
 ## Hexagonal Architecture
 
@@ -284,6 +289,6 @@ The code written here can be found on [GitHub](https://github.com/eduardohki/pro
 
 ## What's next?
 
-So far we implemented our first use-case using TDD, but the case for Hexagonal Architecture is not clear yet. In the next article in this series we'll see how to implement a repository to store the *Projects* created in this use-case. The repository will be defined by an interface (or type, in case of TypeScript) and an in-memory implementation will be created for use in tests.
+So far we implemented our first use-case using TDD, but the case for Hexagonal Architecture is not clear yet. In the next article in this series we'll see how to implement a repository to store the *Projects* created in this use-case. The repository will be defined by an interface (or type, in the case of TypeScript) and an in-memory implementation will be created for use in tests.
 
 See you in the next article!

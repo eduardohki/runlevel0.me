@@ -14,11 +14,12 @@ enableRobotsTXT = true
 disableKinds = ["taxonomy"]
 ignoreErrors = ["error-disable-taxonomy"]
 
+enableEmoji = true
+
 [taxonomies]
    tag = "tags"
    category = "categories"
 
-enableEmoji = true
 
 # unsafe = true allows using HTML in markdown
 [markup]
