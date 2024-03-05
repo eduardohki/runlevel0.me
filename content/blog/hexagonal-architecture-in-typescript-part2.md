@@ -162,7 +162,7 @@ import { InMemoryProjectRepository } from "../repositories/project";
 
 describe("createProject", () => {
     ...
-	it("should not insert a project with a non-unique ID", () => {
+	it("should not create a project with a non-unique ID", () => {
 		const repo = new InMemoryProjectRepository();
 		const projectId = "9fa98a0a-c2a5-4f1e-bcf9-0a60ec7a65c2";
 		repo.insert({ id: projectId, name: "my project name" });
