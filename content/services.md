@@ -31,7 +31,7 @@ _**Sabine Faude**_, Software Engineer at [SEMA](https://www.sema-soft.de/)
 > Working with Eduardo was an absolute delight. His friendly and open demeanor created an atmosphere where collaboration and discussions on various topics were not only encouraged but also immensely enjoyable.
 [...] Eduardo demonstrated exceptional expertise in guiding our team through the complexities of AWS, offering invaluable assistance whenever needed. He always provided insightful support and fostered a culture of continuous learning.
 
-_**Katherine Garrod**_, CISO & VP Digital Workplace at [PPRO](https://www.ppro.com)
+_**Katherine Garrod**_, former CISO & VP Digital Workplace at [PPRO](https://www.ppro.com)
 
 > Eduardo is an outstanding engineer. He’s personable and a pleasure to work with. A natural problem solver with cloud skills that are in high demand. Eduardo always took the initiative and while we worked together he had a far greater impact in our organisation than the role [he] was hired to perform alone. I’d jump at any chance to work with Eduardo again.
 
