@@ -24,7 +24,7 @@ Ready to take your projects to the next level? Reach out to discuss how I can su
 
 ## References
 
-<font size="3">:bulb: _The excerpts below are taken from received [LinkedIn recommendations](https://www.linkedin.com/in/eduardohki/)_.</font>
+<font size="3">_The excerpts below are taken from received [LinkedIn recommendations](https://www.linkedin.com/in/eduardohki/)_.</font>
 
 _**Sabine Faude**_, Software Engineer at [SEMA](https://www.sema-soft.de/)
 
@@ -39,7 +39,7 @@ _**Nagaraj Bhat**_, DevOps Tech Lead at [PPRO](https://www.ppro.com)
 
 > Eduardo consistently demonstrated exemplary knowledge and expertise in AWS, programming, and architecting, contributing significantly to the success of our projects. [...] His willingness to share insights, support colleagues, and contribute to the overall success of the team was truly commendable. [...] Eduardo not only possesses a deep understanding of software development and infrastructure but also can effectively communicate complex concepts to team members, making him an invaluable asset to any project.
 
-<font size="3">:bulb: _The following excerpts were taken from former employer reference letters (which I am happy to provide upon request)_.</font>
+<font size="3">_The following excerpts were taken from former employer reference letters (which I am happy to provide upon request)_.</font>
 
 _**Sven Ramuschkat**_, Founder of [tecRacer Group](https://www.tecracer.com/) - _October 2020_ (originally in German)
 

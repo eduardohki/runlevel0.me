@@ -141,7 +141,7 @@ describe("createProject", () => {
 
 Each test now initializes our In-Memory Repository and passes it to the function under test as a parameter. Now the tests should pass again.
 
-From this point onward we should be again able to change either the test or the code (*Phew!* :face_exhaling:).
+From this point onward we should be again able to change either the test or the code (*Phew!*).
 
 ## Adding one last missing behavior
 
