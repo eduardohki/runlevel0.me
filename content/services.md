@@ -64,7 +64,7 @@ At last, I am an advocate of the _"you build it, you run it"_ mentality and of t
 
 ## Practicalities
 
-* **Location**: I am based in Munich and primarily offer remote services, but I am open to occasional on-site visits outside Munich, especially if you cover my travel and accommodation or agree on an extra flat rate per day of travel. Hybrid or on-site work is also possible if your team is in Munich.
+* **Location**: I am based in Munich and primarily offer remote services, but I am open to occasional on-site visits outside Munich, especially if you cover my travel and accommodation expenses or agree on an all-inclusive rate per day of travel. Hybrid or on-site work is also possible if your team is in Munich.
 
 * **Availability**: I am open for part and full-time contracts for 4 or 5 days a week, up to 8 hours a day. I prefer short (3 to 6 months) and mid-term (9 to 12 months) contracts, though I am also open to longer-term arrangements, depending on the specifics of the project.
 
