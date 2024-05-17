@@ -1,7 +1,9 @@
 {{ $year := dateFormat "2006" now }}
 
+<p style="font-size: 0.9em">
 Copyright &copy; {{ with .Site.Params.since }} {{ . }}{{ end }}{{ if ne $year "2024"}}–{{ $year }}{{end}} {{
 .Site.Params.author }}.
-
-{{ if ne .Site.Params.hideMadeWithLine true }}Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ
-    Bear</a>{{ end }}
+</p>
+<p style="font-size: 0.8em">
+The content on this website is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>.
+</p>
