@@ -38,9 +38,9 @@ src/
     └── project.rs
 ```
 
-In TDD, it is important to understand that tests are measurements used to reduce the risk of breaking the existing system behavior when implementing changes. It therefore implies that if we change both the code *and* the tests at the same time, the change in question becomes risky.
+In TDD, it is important to understand that tests are intended as measurements used to reduce the risk of breaking the existing system behavior when implementing changes. It therefore implies that if we change both the code *and* the tests at the same time, the change in question becomes risky.
 
-However, in this instance this is unavoidable, since we will have to change the signature of the function under test and initialize the In-Memory Repository in the tests themselves. That is also why we are doing this at this initial point, with only one scenario/use-case implemented so far. 
+However, in this instance this is unavoidable, since we will have to change the signature of the function under test and initialize the In-Memory Repository in the tests themselves. That is also why we are doing this at this initial point, with only one scenario/use-case implemented so far.
 
 Let's start by creating a new interface for the Repository, containing an `insert` function:
 
