@@ -20,9 +20,9 @@ teams while conveying the insights and expected outcomes to executive and non-te
 
 ### Password Manager
 
-Password managers are the absolutely minimal baseline for security, as they are like having a secure
+Password managers are the _absolutely minimal baseline for security_, as they are like having a secure
 digital vault that does all the heavy lifting in terms of setting complex and secure passwords and avoiding
-password reuse accounts. Despite being called "password" managers, they are really "secret" managers,
+password reuse in multiple accounts. Despite being called "password" managers, they are really "secret" managers,
 and can (and should) be used to store critical secrets like SSH keys, TLS Certificate Keys, API Tokens, etc.
 
 Not all password managers are the same, thus you may need to consider the following requirements:
