@@ -57,7 +57,7 @@ Solutions I have used that meet these requirements are:
   and has excellent educational resources for non-technical folks.
 * [Bitwarden](https://bitwarden.com/products/business/): this one has the advantage of being open-source and has
   the widest SSO integration options available. In the past the usability wasn't so good as 1Passwords', but
-  they have recently done a great job by improvit it significantly, so it isn't a concern for me anymore.
+  they have recently done a great job by improving it significantly, so it isn't a concern for me anymore.
 
 ## Essential Practices
 
@@ -65,7 +65,7 @@ Solutions I have used that meet these requirements are:
 
 This includes owning their code, databases, monitoring, patching and infrastructure.
 
-The role of the Platform Team is to educate, enable and provide _paved ways_ for teams to be more more productive
+The role of the Platform Team is to educate, enable and provide _paved ways_ for teams to be more productive
 while keeping their capability to independently decide how they will solve these problems.
 
 Should Product Teams need or choose to deviate from these _paved ways_, they must take the responsibility for and
