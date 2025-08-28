@@ -50,4 +50,4 @@ Alongside this, I contribute directly as a developer and architect — ensuring 
 * Bluesky: [@runlevel0.me](https://bsky.app/profile/runlevel0.me)
 
 
-→ [Contact form](/contact/)
+<!--→ [Contact form](/contact/)-->
