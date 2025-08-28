@@ -26,11 +26,11 @@ My work combines **hands-on software development** with **cloud strategy (AWS), 
 - I **guide teams** so that development work is reliable and effective, and knowledge is shared.
 - I **support executives** in making technology decisions that scale sustainably.
 
-Alongside this, I contribute directly as a developer and architect — ensuring that ideas move beyond diagrams and into working software.
+Alongside this, I contribute directly as a developer and architect -- ensuring that ideas move beyond diagrams and into working software.
 
 ## Focus Areas
 
-- **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python, Domain-Driven Design, Test-Driven Development
+- **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python, well-versed in Domain-Driven Design and Test-Driven Development
 - **Cloud & Platform Engineering** – AWS (Serverless, CDK, EKS, ECS, Lambda, DynamoDB), Kubernetes, Terraform, Pulumi
 - **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available and Audit-ready Architectures
 - **Team Enablement** – Mentoring, Training and guidance on Agile Practices and Cloud-Native Systems
