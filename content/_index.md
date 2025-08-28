@@ -1,33 +1,53 @@
 +++
-title = 'Home'
+title = "Home"
+description = "Freelance Software Architect & Principal Engineer in Munich. Bridging Software Architecture, Cloud, and Business Needs."
 url = "/"
 +++
 
-![profile picture](/images/profile-picture.jpg "Hello") 
+<div style="display: flex; align-items: center; gap: 2rem; margin-top: 2rem;">
+  <div>
+    <img src="/images/profile-picture.jpg" alt="profile picture" title="Hello" style="max-width: 250px; border-radius: 5px;">
+  </div>
+  <div style="align-self: flex-start;">
+    <div style="text-align: left; margin-top: 0; line-height: 1.6;">
+      <div style="font-size: 1.6rem;"><strong>Eduardo Hernacki</strong></div>
+      <div style="font-size: 1.4rem;">Freelance Software Architect & Principal Engineer</div>
+      <div style="font-size: 1.2rem;"><em>Munich, Germany</em></div>
+    </div>
+  </div>
+</div>
 
-Hey! I'm Eduardo, and I call myself a Software Engineer and AWS specialist.
+I am a **Software Architect and Principal Engineer** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
 
-I started my career in IT Infrastructure when I was 17, and after gaining a lot of experience
-in Monitoring, Log Management and then DevOps and Cloud over the years, I finally -- and perhaps
-naturally -- found myself on the Software side of things.
+My work combines **hands-on software development** with **cloud strategy (AWS), DevOps practices, and leadership experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable and sustainable.
 
-I'm always continuously learning, and I find great joy when I'm able to use my knowledge and
-experience to elevate others, be it by helping teams and businesses with my technical skills or
-by simply engaging with the community and paying it forward in the form of free mentoring.
+- I **design architectures** that are flexible, stable in operation, and aligned with business priorities.
+- I **connect software engineering, cloud strategy, and product goals** into cohesive systems.
+- I **guide teams** so that development work is reliable and effective, and knowledge is shared.
+- I **support executives** in making technology decisions that scale sustainably.
 
-I'm not afraid of working with uncertainty and the unknown -- _e.g._ to tap into various technology
-stacks or problem areas -- and looking back, it was in these situations that I grew the most
-professionally. I tend to approach problems holistically, considering not only the technological
-aspects but also the human, organizational and social facets of each solution.
+Alongside this, I contribute directly as a developer and architect — ensuring that ideas move beyond diagrams and into working software.
 
-In recent times I found myself in love with the [Rust](https://www.rust-lang.org/) and
-[Elixir](https://elixir-lang.org/) programming languages, and developed a taste for functional
-programming. I also employ [TypeScript](https://www.typescriptlang.org/) extensively in the
-context of AWS and Serverless.
+## Focus Areas
 
-Profiles: [LinkedIn](https://www.linkedin.com/in/eduardohki/), [GitHub](https://github.com/eduardohki/)
+- **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python, Domain-Driven Design, Test-Driven Development
+- **Cloud & Platform Engineering** – AWS (Serverless, CDK, EKS, ECS, Lambda, DynamoDB), Kubernetes, Terraform, Pulumi
+- **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available and Audit-ready Architectures
+- **Team Enablement** – Mentoring, Training and guidance on Agile Practices and Cloud-Native Systems
 
-#### Do you want to hire me?
+## Background
 
-Check out the [services]({{< ref "/services" >}}) page if you are interested to read about my services,
-past projects and references. I'm open to any professional inquiries via email.
+- Over ten years of Cloud and Software experience in SaaS, Finance, Healthcare and Manufacturing sectors
+- Organizer of the **Elixir & Erlang Munich** Meetup
+- Based in Munich, working in **German, English, and Portuguese**
+
+## Contact
+
+* Email: <a href="mailto:&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;">&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;</a>
+* LinkedIn: [in/eduardohki](https://linkedin.com/in/eduardohki)
+* GitHub: [@eduardohki](https://github.com/eduardohki/)
+* Mastodon: [@runlevel0@genserver.social](https://genserver.social/runlevel0)
+* Bluesky: [@runlevel0.me](https://bsky.app/profile/runlevel0.me)
+
+
+→ [Contact form](/contact/)
