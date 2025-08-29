@@ -33,13 +33,15 @@ Alongside this, I contribute directly as a developer and architect -- ensuring t
 - **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python, well-versed in Domain-Driven Design and Test-Driven Development
 - **Cloud & Platform Engineering** – AWS (Serverless, CDK, EKS, ECS, Lambda, DynamoDB), Kubernetes, Terraform, Pulumi
 - **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available and Audit-ready Architectures
-- **Team Enablement** – Mentoring, Training and guidance on Agile Practices and Cloud-Native Systems
+- **Team Enablement** – Mentoring, Training and guidance on Agile and Modern Software Practices
 
 ## Background
 
 - Over ten years of Cloud and Software experience in SaaS, Finance, Healthcare and Manufacturing sectors
 - Organizer of the **Elixir & Erlang Munich** Meetup
 - Based in Munich, working in **German, English, and Portuguese**
+
+<a href="/files/CV-Eduardo_Hernacki.pdf" target="_blank" rel="noreferrer noopener">Full resume/CV available here →</a>
 
 ## Contact
 

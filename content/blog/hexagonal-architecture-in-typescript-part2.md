@@ -35,7 +35,7 @@ src/
 │   ├── createProject.ts
 │   └── entities.ts
 └── repositories/
-    └── project.rs
+    └── project.ts
 ```
 
 In TDD, it is important to understand that tests are intended as measurements used to reduce the risk of breaking the existing system behavior when implementing changes. It therefore implies that if we change both the code *and* the tests at the same time, the change in question becomes risky.
@@ -204,7 +204,7 @@ The new test should now pass, with all tests being green.
 
 The code written in this part 2 can be found on [GitHub](https://github.com/eduardohki/project-collab-platform/tree/part-2).
 
-# What's next?
+## What's next?
 
 So far we have implemented a Repository to store the projects created in this scenario/use-case and adjusted the tests accordingly. Little by little, the general idea of Hexagonal Architecture is taking shape.
 
