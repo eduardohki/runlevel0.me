@@ -38,7 +38,7 @@ Alongside this, I contribute directly as a developer and architect -- ensuring t
 ## Background
 
 - Over ten years of Cloud and Software experience in SaaS, Finance, Healthcare and Manufacturing sectors
-- Organizer of the **Elixir & Erlang Munich** Meetup
+- Organizer of the [**Elixir & Erlang Munich** Meetup](https://www.meetup.com/elixir-munich/)
 - Based in Munich, working in **German, English, and Portuguese**
 
 <a href="/files/CV-Eduardo_Hernacki.pdf" target="_blank" rel="noreferrer noopener">Full resume/CV available here →</a>
