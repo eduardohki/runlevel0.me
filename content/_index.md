@@ -4,11 +4,26 @@ description = "Freelance Software Architect & Principal Engineer in Munich. Brid
 url = "/"
 +++
 
-<div style="display: flex; align-items: center; gap: 2rem; margin-top: 2rem;">
-  <div>
+<style>
+  .profile-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 768px) {
+    .profile-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<div class="profile-container">
+  <div id="picture">
     <img src="/images/profile-picture.jpg" alt="profile picture" title="Hello" style="max-width: 250px; border-radius: 5px;">
   </div>
-  <div style="align-self: flex-start;">
+  <div id="title" style="align-self: flex-start;">
     <div style="text-align: left; margin-top: 0; line-height: 1.6;">
       <div style="font-size: 1.6rem;"><strong>Eduardo Hernacki</strong></div>
       <div style="font-size: 1.4rem;">Freelance Software Architect & Principal Engineer</div>
@@ -50,6 +65,3 @@ Alongside this, I contribute directly as a developer and architect -- ensuring t
 * GitHub: [@eduardohki](https://github.com/eduardohki/)
 * Mastodon: [@runlevel0@genserver.social](https://genserver.social/runlevel0)
 * Bluesky: [@runlevel0.me](https://bsky.app/profile/runlevel0.me)
-
-
-<!--→ [Contact form](/contact/)-->
