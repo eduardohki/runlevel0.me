@@ -21,7 +21,7 @@ url = "/"
 
 <div class="profile-container">
   <div id="picture">
-    <img src="/images/profile-picture.jpg" alt="profile picture" title="Hello" style="max-width: 250px; border-radius: 5px;">
+    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Software Architect and Principal Engineer" title="Hello" style="max-width: 250px; border-radius: 5px;">
   </div>
   <div id="title" style="align-self: flex-start;">
     <div style="text-align: left; margin-top: 0; line-height: 1.6;">
@@ -34,7 +34,7 @@ url = "/"
 
 I am a **Software Architect and Principal Engineer** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
 
-My work combines **hands-on software development** with **cloud strategy (AWS), DevOps practices, and leadership experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable and sustainable.
+My work combines **hands-on software development** with **cloud strategy (AWS), DevOps practices, and leadership experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable, and sustainable.
 
 - I **design architectures** that are flexible, stable in operation, and aligned with business priorities.
 - I **connect software engineering, cloud strategy, and product goals** into cohesive systems.
@@ -45,7 +45,7 @@ Alongside this, I contribute directly as a developer and architect -- ensuring t
 
 ## Core Expertise
 
-- **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available and Compliace-ready Architectures
+- **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available and Compliance-ready Architectures
 - **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python; applying DDD and TDD for maintainable, testable systems
 - **Cloud & Platform Engineering** – AWS (Serverless, CDK, EKS, ECS, Lambda, DynamoDB), Kubernetes, Terraform, Pulumi, infrastructure modernization
 - **Team Enablement** – Mentoring engineers, driving agile practices, and providing Interim Technical Leadership
@@ -54,14 +54,14 @@ Alongside this, I contribute directly as a developer and architect -- ensuring t
 
 Selected references from clients and colleagues I have worked with in recent years:
 
+> *"Working with Eduardo as a Principal Platform Engineering Consultant has been truly transformative for BetterDoc. He enabled us to establish and demonstrate compliant operations across our applications and infrastructure, ensuring we met the demanding regulatory and security standards."*
+> --- **Steffen Glomb**, Chief Product & Technology Officer, [BetterDoc](https://www.betterdoc.org/)
+
 > *"Eduardo quickly integrated into our team and contributed not only with his deep technical knowledge but also with an excellent collaborative spirit. He demonstrated impressive skills in planning and implementing solutions, was proactive, dedicated, and always open to feedback. Additionally, his positive attitude and strong interpersonal skills made working together a truly enjoyable experience."*
-> — **Alina Schuster**, Technical Product Owner, [SCHUFA Holding AG](https://www.schufa.de/)
+> --- **Alina Schuster**, Technical Product Owner, [SCHUFA Holding AG](https://www.schufa.de/)
 
 > *"Eduardo is an outstanding engineer — a natural problem solver with deep cloud expertise. His impact reached far beyond the role he was hired for."*
-> — **Katherine Garrod**, former CISO & VP Digital Workplace, [PPRO](https://www.ppro.com)
-
-> *"Working with Eduardo was a delight. He guided our team through AWS with exceptional expertise while fostering a culture of continuous learning."*
-> — **Sabine Faude**, Software Engineer, [SEMA](https://www.sema-soft.de/)
+> --- **Katherine Garrod**, former CISO & VP Digital Workplace, [PPRO](https://www.ppro.com)
 
 ## Background
 
