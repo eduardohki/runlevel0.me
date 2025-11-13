@@ -1,6 +1,6 @@
 +++
 title = "Home"
-description = "Freelance Software Architect & Principal Engineer in Munich. Bridging Software Architecture, Cloud, and Business Needs."
+description = "Freelance Senior Software Engineer in Munich. Bridging Software, Cloud, and Business."
 url = "/"
 +++
 
@@ -21,31 +21,29 @@ url = "/"
 
 <div class="profile-container">
   <div id="picture">
-    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Software Architect and Principal Engineer" title="Hello" style="max-width: 250px; border-radius: 5px;">
+    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Senior Software Engineer" title="Hello" style="max-width: 250px; border-radius: 5px;">
   </div>
   <div id="title" style="align-self: flex-start;">
     <div style="text-align: left; margin-top: 0; line-height: 1.6;">
       <div style="font-size: 1.6rem;"><strong>Eduardo Hernacki</strong></div>
-      <div style="font-size: 1.4rem;">Freelance Software Architect & Principal Engineer</div>
+      <div style="font-size: 1.4rem;">Senior Software Engineer</div>
       <div style="font-size: 1.2rem;"><em>Munich, Germany</em></div>
     </div>
   </div>
 </div>
 
-I am a **Software Architect and Principal Engineer** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
+I'm a **Senior Software Engineer** focused on **Backend** and **Cloud** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
 
-My work combines **hands-on software development** with **cloud strategy (AWS), DevOps practices, and leadership experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable, and sustainable.
+My work combines **hands-on Software Development** with **Cloud Strategy (AWS), DevOps Practices, and Leadership Experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable, and sustainable.
 
 - I **design architectures** that are flexible, stable in operation, and aligned with business priorities.
 - I **connect software engineering, cloud strategy, and product goals** into cohesive systems.
 - I **guide teams** so that development work is reliable and effective, and knowledge is shared.
 - I **support executives** in making technology decisions that scale sustainably.
 
-Alongside this, I contribute directly as a developer and architect -- ensuring that ideas move beyond diagrams and into working software.
-
 ## Core Expertise
 
-- **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available and Compliance-ready Architectures
+- **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available, and Compliance-Ready Architectures
 - **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python; applying DDD and TDD for maintainable, testable systems
 - **Cloud & Platform Engineering** – AWS (Serverless, CDK, EKS, ECS, Lambda, DynamoDB), Kubernetes, Terraform, Pulumi, infrastructure modernization
 - **Team Enablement** – Mentoring engineers, driving agile practices, and providing Interim Technical Leadership
@@ -67,14 +65,14 @@ Selected references from clients and colleagues I have worked with in recent yea
 
 - Over ten years of Cloud and Software experience in SaaS, Finance, Healthcare and Manufacturing sectors
 - Organizer of the [**Elixir & Erlang Munich** Meetup](https://www.meetup.com/elixir-munich/)
-- Based in Munich, working in **German, English, and Portuguese**
+- Based in Munich, working fluent in **German, English, and Portuguese**
 
 <a href="/files/CV-Eduardo_Hernacki.pdf" target="_blank" rel="noreferrer noopener">Full resume/CV available here →</a>
 
 ## Get in Touch
 
 I'm available for Freelance and Contract Projects across Germany and Europe (remote or hybrid).
-If you are looking for support in Software Architecture, AWS/Cloud Strategy, or Interim Technical Leadership, let’s arrange a conversation.
+If you are looking for support in Software Architecture and Development, AWS/Cloud Strategy, or Interim Technical Leadership, let’s arrange a conversation.
 
 * Email: <a href="mailto:&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;">&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;</a>
 * LinkedIn: [in/eduardohki](https://linkedin.com/in/eduardohki)
