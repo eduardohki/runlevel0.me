@@ -21,18 +21,18 @@ url = "/"
 
 <div class="profile-container">
   <div id="picture">
-    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Senior Software Engineer" title="Hello" style="max-width: 250px; border-radius: 5px;">
+    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Freelance Software & Cloud Engineer" title="Hello" style="max-width: 250px; border-radius: 5px;">
   </div>
   <div id="title" style="align-self: flex-start;">
     <div style="text-align: left; margin-top: 0; line-height: 1.6;">
       <div style="font-size: 1.6rem;"><strong>Eduardo Hernacki</strong></div>
-      <div style="font-size: 1.4rem;">Senior Software Engineer</div>
+      <div style="font-size: 1.4rem;">Freelance Software & Cloud Engineer</div>
       <div style="font-size: 1.2rem;"><em>Munich, Germany</em></div>
     </div>
   </div>
 </div>
 
-I'm a **Senior Software Engineer** focused on **Backend** and **Cloud** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
+I'm a **Senior/Principal Software Engineer** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
 
 My work combines **hands-on Software Development** with **Cloud Strategy (AWS), DevOps Practices, and Leadership Experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable, and sustainable.
 
