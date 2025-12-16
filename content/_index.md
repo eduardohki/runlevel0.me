@@ -36,7 +36,7 @@ url = "/"
   </div>
 </div>
 
-I'm a **Senior/Principal Software Engineer** with over a decade of experience in building scalable software systems and modern architectures.
+I'm a **Senior/Principal Software & Cloud Engineer** with over a decade of experience in building scalable software systems and modern architectures.
 
 I combine **hands-on engineering** with **cloud and platform strategy, DevOps practices, and team enablement**, bridging architecture, operations, and business requirements into sustainable solutions.
 
