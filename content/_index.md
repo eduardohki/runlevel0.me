@@ -28,29 +28,33 @@ url = "/"
       <div style="font-size: 1.6rem;"><strong>Eduardo Hernacki</strong></div>
       <div style="font-size: 1.4rem;">Freelance Software & Cloud Engineer</div>
       <div style="font-size: 1.2rem;"><em>Munich, Germany</em></div>
+      <div style="margin-top: 0.5rem; font-size: 1.1rem; line-height: 1.5;">
+        Designing scalable, secure, and maintainable software systems.  
+        I help teams build reliable platforms and applications, combining architecture, infrastructure automation, and modern engineering practices.
+      </div>
     </div>
   </div>
 </div>
 
-I'm a **Senior/Principal Software Engineer** with more than a decade of experience in **building SaaS products, distributed systems, and modern software architectures**.
+I'm a **Senior/Principal Software Engineer** with over a decade of experience in building scalable software systems and modern architectures.
 
-My work combines **hands-on Software Development** with **Cloud Strategy (AWS), DevOps Practices, and Leadership Experience**. This breadth allows me to bridge architecture, operations, and business requirements into solutions that are effective, scalable, and sustainable.
+I combine **hands-on engineering** with **cloud and platform strategy, DevOps practices, and team enablement**, bridging architecture, operations, and business requirements into sustainable solutions.
 
-- I **design architectures** that are flexible, stable in operation, and aligned with business priorities.
-- I **connect software engineering, cloud strategy, and product goals** into cohesive systems.
-- I **guide teams** so that development work is reliable and effective, and knowledge is shared.
-- I **support executives** in making technology decisions that scale sustainably.
+- I **design architectures** that are flexible, resilient, and aligned with business priorities.
+- I **connect software engineering, platform strategy, and product goals** into cohesive systems.
+- I **guide teams** to deliver reliable and maintainable software while fostering knowledge sharing.
+- I **support leadership** in making technology decisions that scale sustainably.
 
 ## Core Expertise
 
-- **Scalable SaaS Systems** – Secure, Event-Driven, Highly-Available, and Compliance-Ready Architectures
-- **Software Architecture & Development** – Elixir, Rust, TypeScript, Node.js, Python; applying DDD and TDD for maintainable, testable systems
-- **Cloud & Platform Engineering** – AWS (Serverless, CDK, EKS, ECS, Lambda, DynamoDB), Kubernetes, Terraform, Pulumi, infrastructure modernization
-- **Team Enablement** – Mentoring engineers, driving agile practices, and providing Interim Technical Leadership
+- **Scalable & Resilient Systems** - Secure, event-driven, highly-available, and compliance-ready architectures
+- **Software Architecture & Development** - Designing maintainable, testable systems for SaaS and distributed applications
+- **Cloud & Platform Engineering** - Cloud architecture, multi-account AWS environments, container orchestration, and infrastructure automation
+- **Team Enablement & Leadership** - Mentoring engineers, fostering DevOps and modern development practices, and providing technical guidance
 
 ## References
 
-Selected references from clients and colleagues I have worked with in recent years:
+Selected references from clients and colleagues:
 
 > *"Working with Eduardo as a Principal Platform Engineering Consultant has been truly transformative for BetterDoc. He enabled us to establish and demonstrate compliant operations across our applications and infrastructure, ensuring we met the demanding regulatory and security standards."*
 > --- **Steffen Glomb**, Chief Product & Technology Officer, [BetterDoc](https://www.betterdoc.org/)
@@ -65,14 +69,14 @@ Selected references from clients and colleagues I have worked with in recent yea
 
 - Over ten years of Cloud and Software experience in SaaS, Finance, Healthcare and Manufacturing sectors
 - Organizer of the [**Elixir & Erlang Munich** Meetup](https://www.meetup.com/elixir-munich/)
-- Based in Munich, working fluent in **German, English, and Portuguese**
+- Based in Munich, fluent in **German, English, and Portuguese**
 
 <a href="/files/CV-Eduardo_Hernacki.pdf" target="_blank" rel="noreferrer noopener">Full resume/CV available here →</a>
 
 ## Get in Touch
 
-I'm available for Freelance and Contract Projects across Germany and Europe (remote or hybrid).
-If you are looking for support in Software Architecture and Development, AWS/Cloud Strategy, or Interim Technical Leadership, let’s arrange a conversation.
+I'm available for Freelance, Contract and Full-Time engagements across Germany and Europe (remote or hybrid).
+I support teams and organizations in building robust software architectures, modernizing platforms, and enabling engineering excellence.
 
 * Email: <a href="mailto:&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;">&#115;&#101;&#114;&#118;&#105;&#99;&#101;&#115;&#64;&#114;&#117;&#110;&#108;&#101;&#118;&#101;&#108;&#48;&#046;&#109;&#101;</a>
 * LinkedIn: [in/eduardohki](https://linkedin.com/in/eduardohki)
