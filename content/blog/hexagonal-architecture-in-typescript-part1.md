@@ -292,3 +292,5 @@ The code written here can be found on [GitHub](https://github.com/eduardohki/pro
 So far we implemented our first use-case using TDD, but the case for Hexagonal Architecture is not clear yet. In the next article in this series we'll see how to implement a repository to store the *Projects* created in this use-case. The repository will be defined by an interface (or type, in the case of TypeScript) and an in-memory implementation will be created for use in tests.
 
 See you in the next article!
+
+[Continue to Part 2: In-Memory Repository]({{< ref "hexagonal-architecture-in-typescript-part2.md" >}})
