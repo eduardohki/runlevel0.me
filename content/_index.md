@@ -57,7 +57,7 @@ I combine **hands-on engineering** with **cloud and platform strategy, DevOps pr
 Selected references from clients and colleagues:
 
 > *"Working with Eduardo as a Principal Platform Engineering Consultant has been truly transformative for BetterDoc. He enabled us to establish and demonstrate compliant operations across our applications and infrastructure, ensuring we met the demanding regulatory and security standards."*
-> --- **Steffen Glomb**, Chief Product & Technology Officer, [BetterDoc](https://www.betterdoc.org/)
+> --- **Steffen Glomb**, former Chief Product & Technology Officer, [BetterDoc](https://www.betterdoc.org/)
 
 > *"Eduardo quickly integrated into our team and contributed not only with his deep technical knowledge but also with an excellent collaborative spirit. He demonstrated impressive skills in planning and implementing solutions, was proactive, dedicated, and always open to feedback. Additionally, his positive attitude and strong interpersonal skills made working together a truly enjoyable experience."*
 > --- **Alina Schuster**, Technical Product Owner, [SCHUFA Holding AG](https://www.schufa.de/)
