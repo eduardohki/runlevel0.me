@@ -6,6 +6,7 @@ url = "/impressum/"
 # Impressum
 
 Eduardo Hernacki  
+IDEA KITCHEN Coworking  
 Werinherstr. 3  
 81541 München  
 USt-IdNr.: DE365863876  
