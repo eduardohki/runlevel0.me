@@ -25,8 +25,8 @@ DE365863876
 
 ## Professional Liability Insurance
 
-HISCOX SA  
-Arnulfstraße 31  
+HISCOX  
+Bernhard-Wicki-Str. 3
 80636 München
 
 ## Person Responsible for Editorial Content
