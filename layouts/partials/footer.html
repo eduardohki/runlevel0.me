@@ -1,9 +1,9 @@
 {{ $year := dateFormat "2006" now }}
 
 <p style="font-size: 0.9em">
-Copyright &copy; {{ with .Site.Params.since }} {{ . }}{{ end }}{{ if ne $year "2024"}}–{{ $year }}{{end}} {{
+Copyright &copy; {{ with .Site.Params.since }} {{ . }}{{ end }}{{ if ne $year "2024"}}-{{ $year }}{{end}} {{
 .Site.Params.author }}. | <a href='{{ "/imprint/" | relURL }}'>Imprint</a>
 </p>
 <p style="font-size: 0.8em">
-The content on this website is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>.
+The content on this website is licensed under {{ if or .IsHome (eq .Layout "cv") }}<a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-ND 4.0<span class="sr-only"> (opens in a new tab)</span></a>{{ else }}<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>{{ end }}.
 </p>

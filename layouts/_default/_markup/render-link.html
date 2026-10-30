@@ -1,0 +1,6 @@
+{{- /* On the home and CV pages, links open in a new tab (except in-page anchors and email links).
+       Blog posts and other pages keep normal links. */ -}}
+{{- $scope := or .Page.IsHome (eq .Page.Layout "cv") -}}
+{{- $newTab := and $scope (not (or (hasPrefix .Destination "#") (hasPrefix .Destination "mailto:"))) -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $newTab }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}{{ if $newTab }}<span class="sr-only"> (opens in a new tab)</span>{{ end }}</a>
+{{- /* no trailing newline */ -}}

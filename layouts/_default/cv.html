@@ -1,0 +1,492 @@
+{{- define "partials/inline/cv-duration.html" -}}
+  {{- $y := div . 12 -}}{{- $m := mod . 12 -}}
+  {{- if gt $y 0 }}{{ $y }} yr{{ if gt $y 1 }}s{{ end }}{{ end -}}
+  {{- if and (gt $y 0) (gt $m 0) }} {{ end -}}
+  {{- if gt $m 0 }}{{ $m }} mo{{ end -}}
+{{- end -}}
+
+{{ define "main" }}
+{{- $cv := site.Data.cv -}}
+
+{{- /* Month index helpers: YYYY-MM -> year*12 + month. "present" -> current month. */ -}}
+{{- $nowIdx := add (mul (int (now.Format "2006")) 12) (int (now.Format "1")) -}}
+{{- $minIdx := $nowIdx -}}
+{{- $skillMonths := newScratch -}}
+{{- $entries := slice -}}
+{{- range $ci, $ch := $cv.chapters -}}
+  {{- range $ei, $e := $ch.entries -}}
+    {{- $s := time.AsTime (printf "%s-01" $e.start) -}}
+    {{- $sIdx := add (mul (int ($s.Format "2006")) 12) (int ($s.Format "1")) -}}
+    {{- $eIdx := $nowIdx -}}
+    {{- if ne (string $e.end) "present" -}}
+      {{- $t := time.AsTime (printf "%s-01" $e.end) -}}
+      {{- $eIdx = add (mul (int ($t.Format "2006")) 12) (int ($t.Format "1")) -}}
+    {{- end -}}
+    {{- $months := add (sub $eIdx $sIdx) 1 -}}
+    {{- if lt $sIdx $minIdx }}{{ $minIdx = $sIdx }}{{ end -}}
+    {{- /* Collect the months per skill as a set, so overlapping roles are not counted twice. */ -}}
+    {{- range $e.tech }}{{ $skillMonths.Add . (seq $sIdx $eIdx) }}{{ end -}}
+    {{- $entries = $entries | append (dict "e" $e "chapter" $ci "id" (printf "role-%d-%d" $ci $ei) "sIdx" $sIdx "eIdx" $eIdx "months" $months) -}}
+  {{- end -}}
+{{- end -}}
+{{- $span := add (sub $nowIdx $minIdx) 1 -}}
+
+
+<style>
+  /* Design tokens: restyle the whole CV from here. */
+  .cv {
+    --cv-ink: #383838;
+    --cv-muted: #6b6b6b;
+    --cv-line: #d9dbe0;
+    --cv-card: #ffffff;
+    --cv-chip: #e8eaf0;
+    --cv-accent: #2e2787;
+    --cv-ch-0: #2e2787;
+    --cv-ch-1: #4f6bd8;
+    --cv-ch-2: #6fa3c7;
+    --cv-ch-3: #a9b4c2;
+    --cv-ch-x: #c4c9d4;
+    --cv-on-accent: #ffffff;
+    --cv-on-accent-muted: #d8d6f0;
+    --cv-radius: 10px;
+    --cv-grad: linear-gradient(135deg, #324ab2 0%, #2e2787 75%);
+    /* Softer version for chips and tags: the link colours blended with some of the text colour. */
+    --cv-grad-soft: linear-gradient(135deg, color-mix(in srgb, #324ab2 75%, #383838) 0%, color-mix(in srgb, #2e2787 75%, #383838) 75%);
+    color: var(--cv-ink);
+  }
+  @media (prefers-color-scheme: dark) {
+    .cv {
+      --cv-ink: #d3d5db;
+      --cv-muted: #8f94a0;
+      --cv-line: #3a3e4b;
+      --cv-card: #262934;
+      --cv-chip: #343846;
+      --cv-accent: #8cc2dd;
+      --cv-on-accent: #1d1f27;
+      --cv-on-accent-muted: #34404a;
+      --cv-ch-0: #8cc2dd;
+      --cv-ch-1: #6b83e6;
+      --cv-ch-2: #4f86a8;
+      --cv-ch-3: #5b6271;
+      --cv-ch-x: #4a5060;
+      --cv-grad: linear-gradient(135deg, #a2becc 0%, #8cc2dd 75%);
+      --cv-grad-soft: linear-gradient(135deg, color-mix(in srgb, #a2becc 50%, #d3d5db) 0%, color-mix(in srgb, #8cc2dd 50%, #d3d5db) 75%);
+    }
+  }
+  .cv h1, .cv h2, .cv h3, .cv strong, .cv b { color: var(--cv-ink); }
+  .cv h2 { font-size: 1.2em; margin: 2.6rem 0 0.9rem; }
+  .cv-muted { color: var(--cv-muted); }
+  .cv-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* 1. Introduction */
+  .cv-head { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; }
+  .cv-head-text { flex: 1 1 auto; min-width: 0; }
+  .cv-photo { flex: none; width: 120px; height: auto; border-radius: 5px; margin-top: 1rem; }
+  .cv-head h1 { margin: 1rem 0 0; }
+  .cv-sub { margin: 0.2rem 0 0; font-size: 1.05em; }
+  .cv-sub span { color: var(--cv-muted); }
+  .cv-summary { font-size: 1.12em; line-height: 1.6; margin: 1.6rem 0 0; }
+  .cv-summary p { margin: 0; }
+  .cv-links { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; font-size: 0.9em; margin-top: 0.9rem; }
+  .cv-pdf { font-weight: bold; }
+
+  /* 2. Facts as boxes, then the summary */
+  .cv-stats { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1.4rem 0 0; }
+  .cv-stat { flex: 1 1 130px; background: var(--cv-card); border: 1px solid transparent; border-radius: var(--cv-radius); padding: 0.7rem 0.9rem; }
+  .cv-stat b { display: block; font-size: 1.45em; line-height: 1.15; color: var(--cv-accent); }
+  .cv-stat span { font-size: 0.78em; color: var(--cv-muted); }
+
+  /* 3. Career at a Glance */
+  .cv-bar { position: relative; height: 22px; background: var(--cv-chip); border-radius: 6px; overflow: hidden; }
+  .cv-seg { position: absolute; top: 0; bottom: 0; border-right: 2px solid var(--cv-card); display: block; }
+  .cv-seg:hover { filter: brightness(1.25); }
+  .cv-seg.is-dim { opacity: 0.18; }
+  .cv-ticks { position: relative; height: 1.2rem; font-size: 0.72em; color: var(--cv-muted); }
+  .cv-ticks span { position: absolute; transform: translateX(-50%); top: 0.2rem; }
+  .cv-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.85em; margin-top: 0.5rem; }
+  .cv-legend a { white-space: nowrap; }
+  .cv-legend i { display: inline-block; width: 0.75em; height: 0.75em; border-radius: 2px; margin-right: 0.35rem; vertical-align: -0.05em; }
+
+  /* 4. Highlight by Skill */
+  .cv-hint { margin: -0.4rem 0 0.8rem; font-size: 0.85em; color: var(--cv-muted); }
+  .cv-chiprow { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem; align-items: start; margin: 0.5rem 0; }
+  .cv-chips-label { font-size: 0.82em; color: var(--cv-muted); padding-top: 0.35rem; }
+  .cv-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .cv-chip {
+    font: inherit; font-size: 0.82em; cursor: pointer; border: 1px solid var(--cv-line);
+    background: var(--cv-card); color: var(--cv-ink); border-radius: 999px; padding: 0.25rem 0.7rem;
+  }
+  .cv-chip small { color: var(--cv-muted); margin-left: 0.3rem; }
+  .cv-chip[aria-pressed="true"] { background: var(--cv-accent); border-color: var(--cv-accent); color: var(--cv-on-accent); }
+  .cv-chip[aria-pressed="true"] small { color: var(--cv-on-accent-muted); }
+  .cv-statusbar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; }
+  .cv-clear { font: inherit; font-size: 0.85em; background: none; border: none; padding: 0; cursor: pointer;
+              color: var(--cv-accent); text-decoration: underline; }
+  .cv-status { margin: 0.6rem 0 0; font-size: 0.85em; color: var(--cv-muted); min-height: 1.3em; }
+  .cv-skip { position: absolute; left: -9999px; }
+  .cv-skip:focus { position: static; display: inline-block; margin: 0.6rem 0; }
+
+  /* 5. Experience: one column, a coloured rail per chapter */
+  .cv-chapter { margin-top: 2rem; scroll-margin-top: 1rem; }
+  .cv-chapter-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; margin-bottom: 0.8rem; }
+  .cv-chapter-head h2 { margin: 0; }
+  .cv-chapter-head span { color: var(--cv-muted); font-size: 0.9em; }
+  .cv-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.8rem; align-items: start; }
+  .cv-card { background: var(--cv-card); border: 1px solid transparent; border-left: 4px solid var(--cv-ch); border-radius: var(--cv-radius);
+             padding: 0.9rem 1rem; scroll-margin-top: 1rem; transition: opacity 0.15s; }
+  .cv-card.is-wide { grid-column: 1 / -1; }
+  .cv-card.is-dim { opacity: 0.5; }
+  .cv-card.is-target { box-shadow: 0 0 0 2px var(--cv-accent); }
+  .cv-card h3 { margin: 0; font-size: 1em; }
+  .cv-meta { margin: 0.15rem 0 0.5rem; font-size: 0.83em; color: var(--cv-muted); }
+  .cv-card p.cv-sum { margin: 0 0 0.5rem; }
+  .cv-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.75em; margin: 0.4rem 0; }
+  .cv-tags > span { background: var(--cv-chip); border-radius: 4px; padding: 0.05rem 0.45rem; }
+  .cv-tags span.is-hit { background: var(--cv-accent); color: var(--cv-on-accent); }
+  .cv-more { background: transparent !important; border: 1px dashed var(--cv-line); }
+  .cv-more.is-hit { border-color: var(--cv-accent); color: var(--cv-accent); }
+  .cv-card details { font-size: 0.92em; }
+  .cv-card summary { cursor: pointer; color: var(--cv-accent); font-size: 0.92em; }
+  .cv-card ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  .cv-card li { margin: 0.25rem 0; }
+  .cv-alltech { margin: 0.5rem 0 0; font-size: 0.85em; color: var(--cv-muted); }
+
+  /* 6. Beyond the Day Job */
+  .cv-beyond .cv-chapter-head { margin: 1.8rem 0 0.8rem; }
+  .cv-beyond .cv-chapter-head h3 { margin: 0; font-size: 1.05em; }
+  .cv-card h4 { margin: 0; font-size: 1em; }
+  .cv-extra .cv-sum { margin: 0 0 0.4rem; }
+  .cv-extra-links { margin: 0.3rem 0 0; font-size: 0.9em; }
+  .cv-deliveries { margin: 0.2rem 0 0; padding-left: 1.1rem; font-size: 0.92em; }
+  .cv-cards-small { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  /* Packed grid: cards keep their reading order but take only the height they need.
+     A small script sets each card's row span; without it, this is a normal grid. */
+  @media (min-width: 600px) {
+    .cv-cards.is-packed { grid-auto-rows: 4px; row-gap: 0; }
+    .cv-cards.is-packed > .cv-card { margin-bottom: 0.8rem; }
+  }
+
+  @media (max-width: 560px) {
+    .cv-legend a { white-space: normal; }
+    .cv-photo { width: 84px; align-self: flex-start; }
+    .cv-chiprow { grid-template-columns: 1fr; gap: 0.3rem; }
+    .cv-chips-label { padding-top: 0; }
+    .cv-ticks span:nth-child(even) { display: none; }
+    .cv-cards { grid-template-columns: 1fr; }
+  }
+  @media (forced-colors: active) {
+    .cv-bar { forced-color-adjust: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cv-card { transition: none; }
+  }
+
+  /* Gradient text on chips, tags and facts, matching the site's links.
+     Screen only, and never in high-contrast mode, where transparent text would disappear. */
+  @media screen and (forced-colors: none) {
+    /* Gradient text sits on its own small wrapper (.cv-gt), so the chip keeps a normal
+       background. Browsers without gradient text keep the plain text colour. */
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .cv-gt {
+        background-image: var(--cv-grad-soft);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      b.cv-gt { background-image: var(--cv-grad); }
+      .cv-chip[aria-pressed="true"] .cv-gt, .cv-tags span.is-hit .cv-gt {
+        background-image: none;
+        -webkit-text-fill-color: var(--cv-on-accent);
+      }
+      .cv-tags span.cv-more.is-hit .cv-gt { background-image: none; -webkit-text-fill-color: var(--cv-accent); }
+    }
+    /* Selected and highlighted states: gradient fill behind solid text. */
+    .cv-chip[aria-pressed="true"], .cv-tags span.is-hit { background-image: var(--cv-grad); }
+  }
+
+  @media print {
+    .cv {
+      --cv-ink: #383838; --cv-muted: #6b6b6b; --cv-line: #d9dbe0; --cv-card: #ffffff;
+      --cv-chip: #e8eaf0; --cv-accent: #2e2787; --cv-on-accent: #ffffff;
+    }
+    header, footer, .cv-glance, .cv-skills, .cv-skip, .cv-pdf { display: none !important; }
+    body { background: #fff; font-size: 10pt; max-width: none; padding: 0; }
+    .cv-card, .cv-stat { border: 1px solid var(--cv-line); break-inside: avoid; }
+    .cv-card.is-dim { opacity: 1; }
+    .cv-cards.is-packed { grid-auto-rows: auto; row-gap: 0.8rem; }
+    .cv-cards > .cv-card { grid-column: auto !important; grid-row-start: auto !important; grid-row-end: auto !important; margin-bottom: 0 !important; }
+    .cv-card summary { display: none; }
+    a { -webkit-text-fill-color: var(--cv-accent); }
+  }
+</style>
+
+<div class="cv">
+  <!-- 1. Introduction -->
+  <div class="cv-head">
+    <div class="cv-head-text">
+      <h1>Eduardo Hernacki</h1>
+      <p class="cv-sub">{{ $cv.title }} <span>· {{ $cv.location }}</span></p>
+      <p class="cv-links">
+        <a href="mailto:{{ $cv.contact.email }}">{{ $cv.contact.email }}</a>
+        {{- range $cv.contact.links }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }}<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}
+        {{- with $cv.contact.pdf }}<a class="cv-pdf" href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">Download PDF ↓<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}
+      </p>
+    </div>
+    <img class="cv-photo" src="{{ "images/profile-picture.jpg" | relURL }}" alt="" loading="lazy">
+  </div>
+
+  <!-- 2. Facts as boxes, then the summary -->
+  <div class="cv-stats">
+    {{ range $cv.stats }}<div class="cv-stat"><b class="cv-gt">{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}
+  </div>
+  <div class="cv-summary">{{ .Content }}</div>
+
+  <!-- 3. Career at a Glance -->
+  <section class="cv-glance" aria-labelledby="cv-glance-title">
+    <h2 id="cv-glance-title">Career at a Glance</h2>
+    <div class="cv-bar" aria-hidden="true">
+      {{ range $entries }}{{ if ne .e.timeline false }}
+        {{- $left := div (mul (float (sub .sIdx $minIdx)) 100) $span -}}
+        {{- $width := div (mul (float .months) 100) $span -}}
+        <a class="cv-seg" href="#{{ .id }}" tabindex="-1" data-target="{{ .id }}" title="{{ .e.role }}{{ with .e.org }} · {{ . }}{{ end }}"
+           style="left: {{ $left }}%; width: {{ $width }}%; background: var(--cv-ch-{{ .chapter }});"></a>
+      {{- end }}{{ end }}
+    </div>
+    <div class="cv-ticks" aria-hidden="true">
+      {{ $firstYear := div $minIdx 12 }}{{ $lastYear := div $nowIdx 12 }}
+      {{ range seq $firstYear 2 $lastYear }}{{ if ge (sub (mul . 12) $minIdx) 0 }}
+        <span style="left: {{ div (mul (float (sub (add (mul . 12) 1) $minIdx)) 100) $span }}%">{{ . }}</span>
+      {{ end }}{{ end }}
+    </div>
+    <nav class="cv-legend" aria-label="Career chapters">
+      {{ range $i, $ch := $cv.chapters }}<a href="#chapter-{{ $i }}"><i style="background: var(--cv-ch-{{ $i }})"></i>{{ $ch.title }}</a>{{ end }}
+    </nav>
+  </section>
+
+  <a class="cv-skip" href="#experience">Skip to Experience</a>
+
+  <!-- 4. Highlight by Skill -->
+  <section class="cv-skills" aria-labelledby="cv-skills-title">
+    <h2 id="cv-skills-title">Highlight by Skill</h2>
+    <p class="cv-hint" hidden data-js>Pick one or more focus areas or skills to highlight the roles where they were used.</p>
+    <div class="cv-chiprow">
+      <span class="cv-chips-label">Focus</span>
+      <div class="cv-chips">{{ range $cv.hats }}<button type="button" class="cv-chip" data-kind="hat" data-key="{{ .key }}" aria-pressed="false"><span class="cv-gt">{{ .label }}</span></button>{{ end }}</div>
+    </div>
+    {{ range $cv.skill_groups }}
+    <div class="cv-chiprow">
+      <span class="cv-chips-label">{{ .label }}</span>
+      <div class="cv-chips">
+        {{- range .skills }}
+          {{- $m := len (uniq (index $skillMonths.Values . | default slice)) -}}
+          <button type="button" class="cv-chip" data-kind="tech" data-key="{{ . }}" aria-pressed="false"><span class="cv-gt">{{ . }}</span>{{ if gt $m 0 }}{{ $y := int (math.Ceil (div (float $m) 12)) }}<small>{{ $y }} yr{{ if gt $y 1 }}s{{ end }}</small>{{ end }}</button>
+        {{- end }}
+      </div>
+    </div>
+    {{ end }}
+    <div class="cv-statusbar">
+      <p class="cv-status" role="status" aria-live="polite"></p>
+      <button type="button" class="cv-clear" hidden>Clear Selection</button>
+    </div>
+  </section>
+
+  <!-- 5. Experience -->
+  <span id="experience"></span>
+  {{ range $ci, $ch := $cv.chapters }}
+  <section class="cv-chapter" id="chapter-{{ $ci }}" style="--cv-ch: var(--cv-ch-{{ $ci }})">
+    <div class="cv-chapter-head"><h2>{{ $ch.title }}</h2><span>{{ $ch.period }}</span></div>
+    <div class="cv-cards">
+      {{ range $entries }}{{ if eq .chapter $ci }}{{ $e := .e }}
+      <article class="cv-card{{ if eq (len $ch.entries) 1 }} is-wide{{ end }}" id="{{ .id }}" data-hats="{{ delimit $e.hats "|" }}" data-tech="{{ delimit $e.tech "|" }}">
+        <h3>{{ $e.role }}{{ with $e.org }} · {{ . }}{{ end }}</h3>
+        <p class="cv-meta">{{ $e.context }} · {{ (time.AsTime (printf "%s-01" $e.start)).Format "Jan 2006" }} - {{ if eq (string $e.end) "present" }}Present{{ else }}{{ (time.AsTime (printf "%s-01" $e.end)).Format "Jan 2006" }}{{ end }} · {{ partial "inline/cv-duration.html" .months }}</p>
+        <p class="cv-sum">{{ $e.summary }}</p>
+        {{- $max := 6 -}}
+        <div class="cv-tags">{{ range first $max $e.tech }}<span><span class="cv-gt">{{ . }}</span></span>{{ end }}{{ if gt (len $e.tech) $max }}<span class="cv-more"><span class="cv-gt">+{{ sub (len $e.tech) $max }}</span><span class="cv-vh"> more, listed under Technologies Used in the details</span></span>{{ end }}</div>
+        <details{{ if eq $ci 0 }} open{{ end }}>
+          <summary>Details</summary>
+          <ul>{{ range $e.highlights }}<li>{{ . | markdownify }}</li>{{ end }}</ul>
+          <p class="cv-alltech"><strong>Technologies Used:</strong> {{ with $e.tech_used }}{{ . }}{{ else }}{{ delimit $e.tech ", " }}{{ end }}</p>
+        </details>
+      </article>
+      {{ end }}{{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- 6. Beyond the Day Job: same structure as the experience chapters -->
+  <section class="cv-beyond" aria-labelledby="cv-beyond-title" style="--cv-ch: var(--cv-ch-x)">
+    <h2 id="cv-beyond-title">Beyond the Day Job</h2>
+
+    <div class="cv-chapter-head"><h3>Community</h3></div>
+    <div class="cv-cards">
+      {{ range $cv.community }}
+      <article class="cv-card cv-extra" data-tech="{{ delimit (.tech | default slice) "|" }}">
+        <h4>{{ .role }} · {{ .name }}</h4>
+        <p class="cv-meta">Munich · {{ .period }}</p>
+        <p class="cv-sum">{{ .description }}</p>
+        <p class="cv-extra-links">{{ range $i, $l := .links }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}" target="_blank" rel="noopener noreferrer">{{ $l.label }}<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}</p>
+      </article>
+      {{ end }}
+    </div>
+
+    <div class="cv-chapter-head"><h3>Talks</h3></div>
+    <div class="cv-cards">
+      {{ range $cv.talks }}
+      <article class="cv-card cv-extra is-wide" data-tech="{{ delimit (.tech | default slice) "|" }}">
+        <h4>{{ .title }}</h4>
+        {{ with .meta }}<p class="cv-meta">{{ . }}</p>{{ end }}
+        <p class="cv-sum">{{ .description }}</p>
+        <ul class="cv-deliveries">
+          {{ range .deliveries }}<li><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .event }}<span class="sr-only"> (opens in a new tab)</span></a> <span class="cv-muted">· {{ .place }} · {{ .date }}</span>{{ with .recording }} · <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Recording<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}</li>{{ end }}
+        </ul>
+      </article>
+      {{ end }}
+    </div>
+
+    <div class="cv-chapter-head"><h3>Certifications</h3></div>
+    <div class="cv-cards">
+      {{ range $cv.certifications }}
+      <article class="cv-card cv-extra">
+        <h4>{{ .name }} · {{ .issuer }}</h4>
+        <p class="cv-meta">{{ .period }}</p>
+        {{ with .url }}<p class="cv-extra-links"><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Show Credential<span class="sr-only"> (opens in a new tab)</span></a></p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+
+    <div class="cv-chapter-head"><h3>Education</h3></div>
+    <div class="cv-cards">
+      {{ range $cv.education }}
+      <article class="cv-card cv-extra">
+        <h4>{{ .name }} · {{ .org }}</h4>
+        <p class="cv-meta">{{ .place }} · {{ .period }}</p>
+        {{ with .note }}<p class="cv-sum">{{ . }}</p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+
+    <div class="cv-chapter-head"><h3>Languages</h3></div>
+    <div class="cv-cards cv-cards-small">
+      {{ range $cv.languages }}
+      <article class="cv-card cv-extra">
+        <h4>{{ .name }}</h4>
+        <p class="cv-meta">{{ .level }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var chips = document.querySelectorAll(".cv-chip");
+    var cards = document.querySelectorAll(".cv-card[data-hats], .cv-card[data-tech]");
+    var segs = document.querySelectorAll(".cv-seg");
+    var status = document.querySelector(".cv-status");
+    document.querySelectorAll("[data-js]").forEach(function (el) { el.hidden = false; });
+    var clear = document.querySelector(".cv-clear");
+
+    function update() {
+      var picked = Array.prototype.filter.call(chips, function (c) { return c.getAttribute("aria-pressed") === "true"; });
+      var hats = picked.filter(function (c) { return c.dataset.kind === "hat"; }).map(function (c) { return c.dataset.key; });
+      var techs = picked.filter(function (c) { return c.dataset.kind === "tech"; }).map(function (c) { return c.dataset.key; });
+      var any = picked.length > 0;
+      cards.forEach(function (card) {
+        var cardHats = (card.dataset.hats || "").split("|"), cardTech = (card.dataset.tech || "").split("|");
+        var hit = !any || hats.some(function (h) { return cardHats.indexOf(h) !== -1; })
+                       || techs.some(function (t) { return cardTech.indexOf(t) !== -1; });
+        card.classList.toggle("is-dim", !hit);
+        var hiddenHit = false;
+        card.querySelectorAll(".cv-tags > span:not(.cv-more)").forEach(function (t) {
+          t.classList.toggle("is-hit", techs.indexOf(t.textContent) !== -1);
+        });
+        techs.forEach(function (t) {
+          var shown = Array.prototype.some.call(card.querySelectorAll(".cv-tags > span:not(.cv-more)"), function (x) { return x.textContent === t; });
+          if (!shown && cardTech.indexOf(t) !== -1) hiddenHit = true;
+        });
+        var more = card.querySelector(".cv-more");
+        if (more) more.classList.toggle("is-hit", hiddenHit);
+        segs.forEach(function (sg) { if (sg.dataset.target === card.id) sg.classList.toggle("is-dim", !hit); });
+      });
+      if (clear) clear.hidden = !any;
+      if (status) {
+        var matches = document.querySelectorAll(".cv-card[data-hats]:not(.is-dim)").length;
+        var roleCount = document.querySelectorAll(".cv-card[data-hats]").length;
+        var others = document.querySelectorAll(".cv-extra[data-tech]:not(.is-dim)").length;
+        var names = picked.map(function (c) { return c.firstChild.textContent.trim(); });
+        status.textContent = any ? names.join(", ") + ": " + matches + " of " + roleCount + " roles" + (others ? ", plus " + others + " talk and community " + (others === 1 ? "entry" : "entries") : "") + " highlighted." : "";
+      }
+    }
+    chips.forEach(function (c) {
+      c.addEventListener("click", function () {
+        c.setAttribute("aria-pressed", String(c.getAttribute("aria-pressed") !== "true"));
+        update();
+      });
+    });
+    if (clear) clear.addEventListener("click", function () {
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+      update();
+      if (chips[0]) chips[0].focus();
+    });
+
+    segs.forEach(function (s) {
+      s.addEventListener("click", function () {
+        var card = document.getElementById(s.dataset.target);
+        if (!card) return;
+        cards.forEach(function (c) { c.classList.remove("is-target"); });
+        card.classList.add("is-target");
+        var d = card.querySelector("details"); if (d) d.open = true;
+      });
+    });
+
+    // Packed grid: cards keep their reading order and only take the height they need.
+    // Each card goes to the leftmost column unless another column is clearly shorter,
+    // so near-equal columns fill left to right like normal text.
+    var grids = document.querySelectorAll(".cv-cards");
+    var wideQuery = window.matchMedia("(min-width: 600px)");
+    var ROW = 4;          // px per grid row (matches grid-auto-rows)
+    var TOLERANCE = 12;   // rows (about 50px) a column may be taller and still be preferred
+    function pack() {
+      grids.forEach(function (g) {
+        var cards = Array.prototype.filter.call(g.children, function (c) { return c.classList.contains("cv-card"); });
+        cards.forEach(function (c) { c.style.gridColumn = ""; c.style.gridRowStart = ""; c.style.gridRowEnd = ""; });
+        if (!wideQuery.matches) { g.classList.remove("is-packed"); return; }
+        g.classList.add("is-packed");
+        var cols = getComputedStyle(g).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
+        var heights = [];
+        for (var i = 0; i < cols; i++) heights.push(0);
+        cards.forEach(function (c) {
+          var span = Math.ceil((c.getBoundingClientRect().height + parseFloat(getComputedStyle(c).marginBottom || 0)) / ROW);
+          if (cols === 1 || c.classList.contains("is-wide")) {
+            var top = Math.max.apply(null, heights);
+            c.style.gridColumn = "1 / -1";
+            c.style.gridRowStart = String(top + 1);
+            c.style.gridRowEnd = "span " + span;
+            for (var k = 0; k < cols; k++) heights[k] = top + span;
+            return;
+          }
+          var min = Math.min.apply(null, heights);
+          var col = 0;
+          while (heights[col] > min + TOLERANCE) col++;
+          c.style.gridColumn = String(col + 1);
+          c.style.gridRowStart = String(heights[col] + 1);
+          c.style.gridRowEnd = "span " + span;
+          heights[col] += span;
+        });
+      });
+    }
+    pack();
+    window.addEventListener("load", pack);
+    window.addEventListener("resize", pack);
+    document.querySelectorAll(".cv-card details").forEach(function (d) { d.addEventListener("toggle", pack); });
+
+    // Expand every card when printing.
+    var opened = [];
+    window.addEventListener("beforeprint", function () {
+      document.querySelectorAll(".cv-card details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+    });
+    window.addEventListener("afterprint", function () { opened.forEach(function (d) { d.open = false; }); opened = []; });
+  })();
+</script>
+{{ end }}

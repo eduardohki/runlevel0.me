@@ -1,0 +1,333 @@
+# Single source of truth for the CV page (/cv/).
+# Edit here; the page is generated from this file.
+#
+# Per entry:
+#   start / end   YYYY-MM (end: present for the current role). Drives the timeline bar
+#                 and the years shown next to each skill.
+#   summary       one line, shown on the card for skimming.
+#   highlights    shown when the card is expanded.
+#   hats          which focus areas the entry shows (keys from `hats` below).
+#   tech          skills used. Use the same spelling everywhere so years add up.
+#   timeline      set to false to keep a short, overlapping entry off the timeline bar.
+
+contact:
+  email: services@runlevel0.me
+  # Conservative PDF version for recruiters, built from the LaTeX CV repo.
+  pdf: /files/CV-Eduardo_Hernacki.pdf
+  links:
+    - label: LinkedIn
+      url: https://linkedin.com/in/eduardohki
+    - label: GitHub
+      url: https://github.com/eduardohki
+
+title: Software Engineer & Technical Leader
+location: Munich, Germany
+
+stats:
+  - value: "2008"
+    label: In Tech Since
+  - value: "10+"
+    label: Years in Software & Cloud
+  - value: "5"
+    label: Industries, Mostly Regulated
+  - value: "6+"
+    label: Years in Technical Leadership
+
+# Skills panel: one row per group, in this order. Years are computed from the roles'
+# `tech` tags, so a skill only shows years if roles list it with the same spelling.
+skill_groups:
+  - label: Software
+    skills: [TypeScript, Python, Rust, Elixir, Gleam, Behavior-Driven Development, Event-Driven Architecture]
+  - label: AI
+    skills: [AI Agents, Claude Code, Spec-Driven Development, Amazon Bedrock AgentCore]
+  - label: Cloud & DevOps
+    skills: [AWS, AWS CDK, Serverless, Terraform, Kubernetes, Docker, CI/CD, Observability, Security & Compliance, Linux]
+
+# Focus areas. Each entry lists the hats it shows.
+hats:
+  - key: software
+    label: Software Engineering
+  - key: cloud
+    label: Cloud & Operations
+  - key: leadership
+    label: Technical Leadership
+  - key: advisory
+    label: Stakeholders & Advisory
+
+chapters:
+  - title: AI-Augmented Engineering
+    period: 2026 - Present
+    entries:
+      - role: Lead AI Engineer
+        org: SQUER
+        context: For a Financial Services Client · Munich
+        start: 2026-04
+        end: present
+        summary: Made AI coding agents part of everyday software delivery for dozens of developers across three engineering groups, and moved the AI agents built there to a managed cloud runtime.
+        hats: [software, cloud, leadership, advisory]
+        highlights:
+          - Grew the use of AI coding agents (Claude Code) from zero to dozens of active developers across three engineering groups, splitting my time between building the tooling and enabling the teams using it.
+          - Served as one of the client's AI Champions, shaping new ways of working across the business area and developing the AI agents that support them.
+          - Designed and built, in TypeScript and Python on Claude Code and the Claude Agent SDK, a Spec-Driven Development pipeline that turns rough notes, business context and people's input into reviewable Given/When/Then specifications, Jira stories and a code branch per feature, then into code changes through separate implementation and verification stages, with bounded self-correction and autonomous runs.
+          - Drove the move of these pipelines' AI agents to a managed cloud runtime (Amazon Bedrock AgentCore), owning it end to end from planning to execution across teams, so they could run reliably at scale, and built a web dashboard where teams inspect and validate the status of their agent runs.
+          - Authored the contribution standards that let several teams extend the shared tooling safely, with clear interfaces between components and room for teams to adapt defaults to their needs.
+        tech: [Claude Code, Claude Agent SDK, Strands Agents, Amazon Bedrock AgentCore, AWS, TypeScript, Python, AI Agents, Spec-Driven Development, Behavior-Driven Development]
+        tech_used: "Amazon Bedrock AgentCore, Claude Code, Claude Agent SDK, Strands Agents, TypeScript, Python, AI Agent Development"
+
+  - title: Software Architecture & Team Leadership
+    period: 2021 - 2026
+    entries:
+      - role: Tech Lead
+        context: For a Software Consultancy Client · Remote
+        start: 2026-01
+        end: 2026-03
+        summary: Made a team's delivery reliable and predictable with clear engineering standards, end-to-end testing and BDD specifications shared by Product and Development.
+        hats: [software, leadership, advisory]
+        highlights:
+          - Raised the team's engineering maturity with clear standards and architectural guidance for a serverless, event-driven AWS system built on Lambda, API Gateway, EventBridge and DynamoDB, building stakeholder confidence through consistent results.
+          - Improved the CI/CD pipelines and introduced unit, integration and end-to-end testing with Pytest and Vitest, plus BDD specifications that gave Product and Development a shared language.
+          - Made code reviews, pair programming and knowledge sharing part of the team's routine, improving accountability and making progress more transparent and predictable.
+          - Owned the work end to end, from requirements analysis to infrastructure as code with Terraform and AWS CDK and deployment.
+        tech: [Python, TypeScript, AWS, AWS CDK, Terraform, PostgreSQL, Next.js, Claude Code, Behavior-Driven Development, Event-Driven Architecture, Serverless, CI/CD]
+        tech_used: "Python, TypeScript, Terraform, AWS (CDK, Lambda, API Gateway, DynamoDB, EventBridge), PostgreSQL, Pytest, Vitest, Next.js, Claude Code"
+
+      - role: Lead Platform Engineer
+        org: BetterDoc
+        context: Health Services Provider · Remote
+        start: 2024-11
+        end: 2025-08
+        summary: Helped a patient-guidance platform establish and demonstrate compliant, recoverable operations, and shaped the migration strategy for more than 100 microservices.
+        hats: [cloud, leadership, advisory]
+        highlights:
+          - Designed and rolled out a multi-account backup and recovery strategy with AWS Backup across AWS Organizations, with cross-region replication within Europe and Slack notifications.
+          - Automated software supply-chain security by generating a software bill of materials for every build in GitHub Actions, scanning it for vulnerabilities with Trivy and tracking the results centrally in Dependency-Track.
+          - Ran on-site workshops for team leads and wrote internal guidelines on event-driven systems, leading to consistent adoption across product teams.
+          - Defined the migration strategy to next-generation Amazon EKS clusters and helped rationalize more than 100 microservices, balancing team autonomy with operational efficiency.
+          - Defined patching workflows for EKS and EC2 workloads, and streamlined the Terraform codebase to reduce complexity and cost.
+        tech: [AWS, Kubernetes, Terraform, Python, Elixir, Docker, GitHub Actions, SBOM, Event-Driven Architecture, CI/CD, Observability, Security & Compliance]
+        tech_used: "AWS (Organizations, Landing Zone, IAM Identity Center, Backup, Security Hub, S3, Lambda, RDS, EKS, ECR, SQS, SNS, Bedrock, Cost Optimization), Kubernetes, Helm, Docker, Terraform, PostgreSQL, Python, Elixir, GitHub Actions, Trivy, Dependency-Track, SBOM, Prometheus, Loki, Grafana, EventCatalog, Jira, Confluence"
+
+      - role: Cloud Consultant
+        org: SCHUFA
+        context: Credit Bureau · Remote
+        start: 2024-03
+        end: 2024-10
+        summary: Made a SaaS product's infrastructure maintainable and standardized by moving it to AWS CDK, and coached its team to own the full application lifecycle.
+        hats: [software, cloud, leadership]
+        highlights:
+          - Migrated the infrastructure of a Java Spring Boot and React SaaS product from Terraform to AWS CDK in TypeScript.
+          - Guided a team of four developers to take full ownership of the application lifecycle through CDK practices, code reviews and pair programming.
+          - Supported Platform and Product teams in adopting AWS CDK and designing their infrastructure.
+          - Improved the maintainability and resilience of a TypeScript serverless application on AWS Lambda and API Gateway while extending it during a cross-account migration.
+        tech: [AWS, AWS CDK, TypeScript, Node.js, Terraform, PostgreSQL, Event-Driven Architecture, Serverless]
+        tech_used: "AWS (CDK, API Gateway, S3, Lambda, RDS, ECS, Fargate), TypeScript, Node.js, Terraform, PostgreSQL, OpenAPI, OAuth, GitHub, React, Java, Spring Boot, Jira, Confluence"
+
+      - role: Lead Software Engineer
+        org: SEMA GmbH
+        context: CAD/CAM Software · Wildpoldsried
+        start: 2022-08
+        end: 2024-01
+        summary: Led the four-person engineering team behind SEMA's new Common Data Environment, a SaaS product for the timber construction industry, responsible for its technical direction and delivery.
+        hats: [software, cloud, leadership, advisory]
+        highlights:
+          - Owned the architecture of the Common Data Environment at SEMA, a CAD/CAM vendor serving more than 11,000 customers in over 60 countries, building core parts of it hands-on in TypeScript and Rust and facilitating the team's Scrum process.
+          - Worked closely with stakeholders and product owners to clarify and prioritize requirements, guiding the team towards pragmatic, high-quality solutions.
+          - Built an event-driven file processing pipeline on Amazon S3 events and AWS Lambda that automated file handling.
+          - Helped hire for technical and leadership roles, and grew the team's skills through pair programming sessions and AWS training.
+        tech: [TypeScript, Node.js, Rust, AWS, AWS CDK, Docker, Event-Driven Architecture, Behavior-Driven Development, Serverless]
+        tech_used: "AWS (CDK, API Gateway, S3, DynamoDB, Lambda, ECS, Fargate, Cost Optimization), TypeScript, Node.js, Rust (Async/Tokio), poem-openapi, OpenAPI, OAuth, BDD, Azure DevOps, SAFe"
+
+      - role: Principal Engineer
+        org: PPRO
+        context: Payments Infrastructure · Munich
+        start: 2021-11
+        end: 2022-07
+        summary: Uplifted an established payments engineering organization by standardizing and streamlining its AWS practices, through company-wide training, governance and compliance reviews, and hands-on serverless delivery.
+        hats: [software, cloud, leadership, advisory]
+        highlights:
+          - Designed and delivered an AWS training program with the AWS Technical Account Manager, adopted across the engineering organization.
+          - Supported cloud governance and compliance reviews of the AWS environment, covering security, scalability and regulatory requirements.
+          - Implemented a multi-account AWS setup with AWS CDK and a GitLab CI/CD pipeline for reliable deployments.
+          - Delivered a serverless TypeScript backend on AWS Lambda, defined with AWS CDK, for a UK merchant's transaction portal.
+          - Helped hire cloud engineers and team leads, and advocated for serverless approaches in cross-team technical discussions.
+        tech: [AWS, AWS CDK, TypeScript, Python, Terraform, Kubernetes, Docker, Event-Driven Architecture, Serverless, CI/CD, Security & Compliance]
+        tech_used: "AWS (CDK, API Gateway, Lambda, Kinesis, EKS, ECS, Fargate, CloudFormation), Serverless, TypeScript, JavaScript, Node.js, Cypress, Python, Docker, Terraform, Pulumi, Kubernetes, Helm, Elasticsearch/OpenSearch, GitLab, Okta, OAuth, Middy.js, Jira, Confluence"
+
+  - title: Cloud & DevOps
+    period: 2017 - 2021
+    entries:
+      - role: Lead Cloud Consultant
+        org: tecRacer
+        context: AWS Consulting · Munich
+        start: 2019-08
+        end: 2021-10
+        summary: AWS consulting across industries, including a multi-region migration for an insurer handling 300,000+ simultaneous connections.
+        hats: [software, cloud, advisory]
+        highlights:
+          - Delivered technical and strategic AWS consulting across industries in Germany and Austria, including projects with regulatory requirements, and supported pre-sales and hiring.
+          - Directed the migration of a device management platform to AWS for a German insurer, with an active-active multi-region setup on Amazon EC2 and Route 53 handling more than 300,000 simultaneous device connections.
+          - Led a database migration from Microsoft SQL Server to MySQL-compatible Amazon Aurora Serverless for a SAP Commerce platform serving the Japanese market, resolving Unicode and performance issues and improving monitoring with New Relic.
+          - Built a serverless application around a state machine architecture with AWS Step Functions, Lambda and DynamoDB, including PDF generation and email delivery.
+        tech: [AWS, AWS CDK, Terraform, Kubernetes, TypeScript, Python, Docker, Event-Driven Architecture, Serverless, CI/CD, Observability, Security & Compliance]
+        tech_used: "AWS (CDK, API Gateway, Cloud Migration, Lambda, DynamoDB, Aurora, EKS, ECS, Fargate, CloudFormation, Cost Optimization), VMware, Microsoft SQL Server, Jenkins, TypeScript, JavaScript, Node.js, Python, Docker, Terraform, Kubernetes, Elasticsearch/OpenSearch, Jira, Confluence"
+
+      - role: Senior DevOps Engineer
+        org: Commerce Connector (now Wayvia)
+        context: E-Commerce SaaS · Stuttgart
+        start: 2018-01
+        end: 2019-07
+        summary: Kept a global e-commerce SaaS platform reliable, secure and observable.
+        hats: [cloud]
+        highlights:
+          - Kept a global e-commerce SaaS platform reliable, secure and performant.
+          - Introduced Prometheus and Grafana for KPI monitoring and improved log management with Splunk.
+          - Supported Quality and Data Engineering teams with serverless and containerized infrastructure on AWS Lambda and Fargate.
+        tech: [AWS, Docker, Python, Node.js, Prometheus, Event-Driven Architecture, Serverless, Observability]
+        tech_used: "AWS (Lambda, Fargate, EC2, RDS, S3, CloudFront), Serverless Framework, Prometheus, Grafana, Splunk, Docker, Python, Node.js"
+
+      - role: AWS Cloud Engineer
+        org: Nuvme
+        context: Cloud Services · Blumenau, Brazil
+        start: 2017-03
+        end: 2017-12
+        summary: Led several migrations of web and ERP systems to AWS.
+        hats: [cloud, leadership]
+        highlights:
+          - Led several migrations of web and ERP systems to AWS, moving workloads onto Amazon EC2 and RDS with Docker-based deployments.
+        tech: [AWS, Docker, Linux, Python, Observability]
+        tech_used: "AWS (EC2, S3, IAM, Route 53, RDS), Docker, Grafana, Elasticsearch, Linux (RHEL, Ubuntu), MySQL, Python"
+
+  - title: Infrastructure & Operations
+    period: 2008 - 2017
+    entries:
+      - role: Linux & Open Source Consultant
+        org: Indyxa Group
+        context: IT Services · Blumenau, Brazil
+        start: 2014-01
+        end: 2017-03
+        summary: Infrastructure, monitoring and log management for mission-critical environments.
+        hats: [cloud, advisory]
+        highlights:
+          - Consulted on infrastructure, monitoring and log management for mission-critical RHEL and CentOS environments, maintaining Nagios for monitoring and implementing Graylog with Elasticsearch for centralized logs, improving reliability and security.
+        tech: [Linux, Python, Elasticsearch, Observability]
+        tech_used: "Linux (RHEL, CentOS), Nagios, Graylog, Elasticsearch, VMware, Oracle DB, Python, Bash"
+
+      - role: Linux Administration Instructor
+        org: Proway IT Training
+        context: Training · Blumenau, Brazil
+        start: 2013-05
+        end: 2013-06
+        timeline: false
+        summary: Taught the Red Hat Linux administration course.
+        hats: [leadership]
+        highlights:
+          - Taught the Red Hat Linux administration course, covering system configuration and network services.
+        tech: [Linux]
+        tech_used: "Red Hat Enterprise Linux 5 and 6"
+
+      - role: IT Support Analyst
+        org: QuickSoft Sistemas de Informações
+        context: IT Services · Blumenau, Brazil
+        start: 2012-08
+        end: 2014-01
+        summary: Enterprise infrastructure support, including data protection and automated backup monitoring.
+        hats: [cloud]
+        highlights:
+          - Supported enterprise infrastructure on Linux and VMware, including data protection and automated backup monitoring with IBM Tivoli Storage Manager.
+        tech: [Linux]
+        tech_used: "IBM TSM, Linux, VMware, Exchange Server"
+
+      - role: IT Support Technician
+        org: Advance Solution
+        context: IT Services · Blumenau, Brazil
+        start: 2008-10
+        end: 2012-08
+        summary: IT infrastructure support for small and medium businesses.
+        hats: [cloud]
+        highlights:
+          - Supported IT infrastructure for small and medium businesses, from Windows Server and Active Directory to networking.
+        tech: [Windows Server]
+        tech_used: "Windows Server, Active Directory, Exchange, Hyper-V, Trend Micro"
+
+community:
+  - name: Elixir, Erlang & Gleam Munich Meetup
+    role: Organizer
+    tech: [Elixir, Gleam]
+    period: Aug 2024 - Present
+    description: The meetup for everything related to Elixir, Erlang, Gleam and the BEAM in Munich.
+    links:
+      - label: Events
+        url: https://www.meetup.com/elixir-munich/events/
+      - label: Website
+        url: https://elixir-munich.org/
+  - name: FP Stammtisch Munich
+    role: Organizer
+    tech: [Gleam, Elixir]
+    period: Mar 2026 - Present
+    description: A monthly, casual get-together for anyone interested in pragmatic functional programming around Munich.
+    links:
+      - label: Calendar
+        url: https://luma.com/fp-munich
+
+talks:
+  - title: Functional Domain Modeling with Gleam
+    tech: [Gleam]
+    meta: 20 Min · For Developers and Software Architects
+    description: How Gleam's type system and pure functions make domain logic readable to the people who own it, while keeping the robustness of the BEAM.
+    deliveries:
+      - event: Code BEAM Europe 2025
+        place: Berlin
+        date: Nov 2025
+        url: https://codebeameurope.com/talks/functional-domain-modeling-with-gleam/
+        recording: https://www.youtube.com/watch?v=15SczP3dNG4
+      - event: Elixir, Erlang & Gleam Meetup Munich
+        place: Munich
+        date: Feb 2025
+        url: https://www.meetup.com/elixir-munich/events/304076641/
+  - title: Running Elixir on AWS without Kubernetes
+    tech: [Elixir, AWS, AWS CDK, Serverless]
+    meta: 45 Min · For Developers, Platform Teams and Architects
+    description: Why Kubernetes can be overkill on AWS, and how to run BEAM applications on ECS Fargate with AWS CDK, so teams can own their infrastructure in an integrated, cost-effective and secure-by-default way.
+    deliveries:
+      - event: Elixir, Erlang & Gleam Meetup Munich
+        place: Munich
+        date: Sep 2025
+        url: https://www.meetup.com/elixir-munich/events/310306789/
+        recording: "https://www.youtube.com/watch?v=SUexJAYotKM&t=479s"
+
+certifications:
+  - name: Claude Certified Architect - Foundations
+    issuer: Anthropic
+    period: Jul 2026 - Jul 2027
+    url: https://www.credly.com/badges/588593bd-d4a6-49d2-9919-aeb677c3d609/
+  - name: AWS Certified Solutions Architect - Associate
+    issuer: Amazon Web Services
+    period: May 2020 - May 2023
+    url: https://cp.certmetrics.com/amazon/en/public/verify/credential/V1FX0DY1MEQ1Q2GC
+  - name: Red Hat Certified Engineer (RHEL 7)
+    issuer: Red Hat
+    period: Dec 2014 - Dec 2017
+    url: https://rhtapps.redhat.com/verify?certId=140-246-794
+  - name: Red Hat Certified System Administrator (RHEL 7)
+    issuer: Red Hat
+    period: Dec 2014 - Dec 2017
+    url: https://rhtapps.redhat.com/verify?certId=140-246-794
+
+education:
+  - name: Computer Science Studies
+    org: Universidade Regional de Blumenau
+    place: Blumenau, Brazil
+    period: Jul 2015 - Jul 2016
+    note: Left after the second semester to focus on self-paced learning.
+  - name: Technician in Computer Hardware and Networking
+    org: CEDUP Hermann Hering
+    place: Blumenau, Brazil
+    period: 2007 - 2008
+
+languages:
+  - name: Portuguese
+    level: Native
+  - name: English
+    level: Fluent
+  - name: German
+    level: Fluent

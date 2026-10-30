@@ -53,6 +53,42 @@
     font-weight: 400;
   }
 
+  /* Text for screen readers only, e.g. '(opens in a new tab)'. */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* The nav sits at the top of every page; keep some room above it. */
+  header > nav:first-child { margin-top: 1.5em; }
+
+  /* The site title used to be an h2; keep its look without making it a heading. */
+  .title .site-title {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0;
+  }
+
+  /* Links inside running text are underlined, so they don't rely on colour alone.
+     Navigation-style link lists (nav, contact lines, blog index, CV chapter links) stay as they are. */
+  main p a,
+  main li a,
+  main blockquote a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+  main .cv-links a,
+  main .cv-legend a,
+  main ul.blog-posts a {
+    text-decoration: none;
+  }
+
   nav a {
     margin-right: 10px;
     font-weight: bolder;

@@ -4,7 +4,7 @@ date = "2025-02-20T12:00:00+01:00"
 
 description = "A non-exhaustive list of tools every platform should provide to its internal users, and of practices that every technical organization should consider adopting."
 categories = ['Software Engineering', 'Platform Engineering']
-series = ['Egineering Practices']
+series = ['Engineering Practices']
 tags = ['Practices', 'Tools']
 +++
 

@@ -7,6 +7,8 @@ url = "/imprint/"
 
 ## Site Notice
 
+Information according to § 5 DDG (Digitale-Dienste-Gesetz)
+
 Eduardo Hernacki  
 IDEA KITCHEN Coworking  
 Werinherstr. 3  
@@ -51,7 +53,7 @@ You have the right at any time to obtain information free of charge and without 
 
 **1. Liability for Content**
 
-As a service provider, I am responsible for my own content on these pages in accordance with general laws pursuant to § 7 Abs. 1 TMG. However, according to §§ 8 to 10 TMG, I am not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the moment of knowledge of a specific infringement. Upon becoming aware of such violations, I will remove this content immediately.
+I am responsible for my own content on these pages in accordance with general laws. However, I am not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the moment of knowledge of a specific infringement. Upon becoming aware of such violations, I will remove this content immediately.
 
 **2. Liability for Links**
 

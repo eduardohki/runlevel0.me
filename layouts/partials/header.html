@@ -1,7 +1,11 @@
-<a href="{{ "" | relURL }}" class="title">
-  <h2>{{ .Site.Title }}</h2>
-</a>
+{{- /* The nav always comes first, so it stays in the same place on every page.
+       The home and CV pages show the name in their hero; other pages show it under the nav. */ -}}
 <nav>{{- partial "nav.html" . -}}</nav>
+{{ if not (or .IsHome (eq .Layout "cv")) }}
+<a href="{{ "" | relURL }}" class="title">
+  <span class="site-title">{{ .Site.Title }}</span>
+</a>
+{{ end }}
 {{ if not hugo.IsServer }}
 <script src="https://getinsights.io/js/insights.js"></script>
 <script>
