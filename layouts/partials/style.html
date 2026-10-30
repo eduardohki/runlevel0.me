@@ -63,6 +63,10 @@
     white-space: nowrap;
   }
 
+  /* Code blocks: lift Monokai's comment grey and keyword pink slightly so they meet contrast. */
+  pre span[style*="color:#75715e"] { color: #9a957e !important; }
+  pre span[style*="color:#f92672"] { color: #fb4b8b !important; }
+
   /* The nav sits at the top of every page; keep some room above it. */
   header > nav:first-child { margin-top: 1.5em; }
 

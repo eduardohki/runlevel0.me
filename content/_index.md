@@ -100,7 +100,7 @@ I prefer functional programming, and I lean towards [Gleam](https://gleam.run) f
 How a strong type system and pure functions can make business logic readable to the people who own it, not only to engineers.
 
 <span class="home-meta">[Code BEAM Europe 2025](https://codebeameurope.com/talks/functional-domain-modeling-with-gleam/) · Berlin · Nov 2025 · [Recording](https://www.youtube.com/watch?v=15SczP3dNG4)</span><br>
-<span class="home-meta">[Elixir, Erlang & Gleam Meetup Munich](https://www.meetup.com/elixir-munich/events/304076641/) · Munich · Feb 2025</span>
+<span class="home-meta">[Elixir, Erlang & Gleam Munich Meetup](https://www.meetup.com/elixir-munich/events/304076641/) · Munich · Feb 2025</span>
 
 </div>
 
@@ -110,7 +110,7 @@ How a strong type system and pure functions can make business logic readable to 
 
 Why Kubernetes can be overkill on AWS, and how to run BEAM applications on ECS Fargate with AWS CDK, so teams can own their infrastructure in an integrated, cost-effective and secure-by-default way.
 
-<span class="home-meta">[Elixir, Erlang & Gleam Meetup Munich](https://www.meetup.com/elixir-munich/events/310306789/) · Munich · Sep 2025 · [Recording](https://www.youtube.com/watch?v=SUexJAYotKM&t=479s)</span>
+<span class="home-meta">[Elixir, Erlang & Gleam Munich Meetup](https://www.meetup.com/elixir-munich/events/310306789/) · Munich · Sep 2025 · [Recording](https://www.youtube.com/watch?v=SUexJAYotKM&t=479s)</span>
 
 </div>
 

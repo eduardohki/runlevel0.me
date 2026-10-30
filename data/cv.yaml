@@ -280,7 +280,7 @@ talks:
         date: Nov 2025
         url: https://codebeameurope.com/talks/functional-domain-modeling-with-gleam/
         recording: https://www.youtube.com/watch?v=15SczP3dNG4
-      - event: Elixir, Erlang & Gleam Meetup Munich
+      - event: Elixir, Erlang & Gleam Munich Meetup
         place: Munich
         date: Feb 2025
         url: https://www.meetup.com/elixir-munich/events/304076641/
@@ -289,7 +289,7 @@ talks:
     meta: 45 Min · For Developers, Platform Teams and Architects
     description: Why Kubernetes can be overkill on AWS, and how to run BEAM applications on ECS Fargate with AWS CDK, so teams can own their infrastructure in an integrated, cost-effective and secure-by-default way.
     deliveries:
-      - event: Elixir, Erlang & Gleam Meetup Munich
+      - event: Elixir, Erlang & Gleam Munich Meetup
         place: Munich
         date: Sep 2025
         url: https://www.meetup.com/elixir-munich/events/310306789/
