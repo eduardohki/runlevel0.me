@@ -1,6 +1,9 @@
-{{- /* On the home and CV pages, links open in a new tab (except in-page anchors and email links).
+{{- /* On the home and CV pages, links to other websites open in a new tab.
+       Links within this site, in-page anchors and email links stay in the same tab.
        Blog posts and other pages keep normal links. */ -}}
 {{- $scope := or .Page.IsHome (eq .Page.Layout "cv") -}}
-{{- $newTab := and $scope (not (or (hasPrefix .Destination "#") (hasPrefix .Destination "mailto:"))) -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $external := and (in (slice "http" "https") $u.Scheme) (ne $u.Host (urls.Parse site.BaseURL).Host) -}}
+{{- $newTab := and $scope $external -}}
 <a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $newTab }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}{{ if $newTab }}<span class="sr-only"> (opens in a new tab)</span>{{ end }}</a>
 {{- /* no trailing newline */ -}}

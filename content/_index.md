@@ -19,9 +19,9 @@ url = "/"
   }
 
   /* Shared look with the CV page: soft cards with a neutral edge. */
-  :root { --home-card: #ffffff; --home-edge: #4f6bd8; --home-card-edge: #c4c9d4; --home-muted: #6b6b6b; --home-line: #d9dbe0; }
+  :root { --home-card: #ffffff; --home-card-edge: #c4c9d4; --home-muted: #6b6b6b; --home-line: #d9dbe0; }
   @media (prefers-color-scheme: dark) {
-    :root { --home-card: #262934; --home-edge: #6b83e6; --home-card-edge: #4a5060; --home-muted: #8f94a0; --home-line: #3a3e4b; }
+    :root { --home-card: #262934; --home-card-edge: #4a5060; --home-muted: #8f94a0; --home-line: #3a3e4b; }
   }
   main blockquote, .home-card {
     background: var(--home-card); border: 1px solid transparent; border-left: 4px solid var(--home-card-edge);
@@ -32,10 +32,7 @@ url = "/"
   main blockquote p + p { margin-top: 0.5rem; font-size: 0.9em; color: var(--home-muted); text-align: right; }
   .home-card p { margin: 0.2rem 0; }
   .home-card .home-meta { font-size: 0.9em; color: var(--home-muted); }
-  .home-button {
-    display: inline-block; margin-top: 0.4rem; padding: 0.35rem 0.95rem;
-    border: 1px solid var(--home-edge); border-radius: 999px; font-weight: bold; text-decoration: none !important;
-  }
+  .home-cv-link { font-size: 1.15em; }
   .home-links { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
   .home-links a { text-decoration: none !important; }
   @media print {
@@ -120,7 +117,7 @@ Why Kubernetes can be overkill on AWS, and how to run BEAM applications on ECS F
 - Claude Certified Architect - Foundations (Anthropic, 2026)
 - Based in Munich, fluent in **German, English and Portuguese**
 
-<a class="home-button" href="/cv/" target="_blank" rel="noopener noreferrer">Full resume/CV available here →<span class="sr-only"> (opens in a new tab)</span></a>
+<p class="home-cv-link"><a href="/cv/">Full resume/CV available here →</a></p>
 
 ## Get in Touch
 
