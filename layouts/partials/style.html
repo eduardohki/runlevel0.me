@@ -1,18 +1,48 @@
 <style>
+  /* Colour tokens shared by every page. Dark values apply on screen only,
+     so a page printed from dark mode still comes out dark-on-white. */
+  :root {
+    --bg: #f2f3f4;
+    --ink: #383838;          /* body text and headings */
+    --muted: #6b6b6b;        /* dates, captions, attributions */
+    --line: #d9dbe0;         /* dividers and outlines */
+    --card: #ffffff;
+    --card-edge: #c4c9d4;    /* neutral left edge of cards and quotes */
+    --code-bg: #e4e6e8;
+    --link: #324ab2;         /* solid link colour where the gradient can't show */
+    --link-from: #324ab2;    /* the link gradient's two ends */
+    --link-to: #2e2787;
+    --link-grad: linear-gradient(135deg, var(--link-from) 0%, var(--link-to) 75%);
+  }
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1d1f27;
+      --ink: #d3d5db;
+      --muted: #8f94a0;
+      --line: #3a3e4b;
+      --card: #262934;
+      --card-edge: #4a5060;
+      --code-bg: #2e2f35;
+      --link: #8cc2dd;
+      --link-from: #a2becc;
+      --link-to: #8cc2dd;
+    }
+  }
+
   body {
     font-family: Verdana, sans-serif;
     margin: auto;
     padding: 20px;
     max-width: 720px;
     text-align: left;
-    background-color: #f2f3f4;
+    background-color: var(--bg);
     word-wrap: break-word;
     overflow-wrap: break-word;
     font-size: 1.1em;
     font-weight: 400;
     line-break: normal;
     line-height: 1.5;
-    color: #383838;
+    color: var(--ink);
   }
 
   h1,
@@ -23,28 +53,42 @@
   h6,
   strong,
   b {
-    color: #383838;
+    color: var(--ink);
   }
 
+  /* Headings: tighter leading than body text, and more space above than below,
+     so each heading belongs to the section it starts. */
+  h1, h2, h3, h4 { line-height: 1.25; text-wrap: balance; }
+  main h2, main h3 { margin: 1.5em 0 0.5em; }
+  p, li, blockquote { text-wrap: pretty; }
+
   a {
-    color: #324ab2;
-    background: rgb(50, 74, 178);
-    background: -moz-linear-gradient(135deg, rgba(50, 74, 178, 1) 0%, rgba(46, 39, 135, 1) 75%);
-    background: -webkit-linear-gradient(135deg, rgba(50, 74, 178, 1) 0%, rgba(46, 39, 135, 1) 75%);
-    background: linear-gradient(135deg, rgba(50, 74, 178, 1) 0%, rgba(46, 39, 135, 1) 75%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#324ab2", endColorstr="#2e2787", GradientType=1);
-    background-clip: text;
-    background-size: cover;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
+    color: var(--link);
     text-decoration: none;
   }
 
+  /* Gradient link text, on screen only. Printing drops backgrounds and high-contrast mode drops
+     gradients, and either would leave the text transparent; there links keep their solid colour. */
+  @media screen and (forced-colors: none) {
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      a {
+        background-image: var(--link-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  /* Keyboard focus in the link colour, clear of the text it surrounds. */
+  :focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+  }
+
   .title {
-    -webkit-text-fill-color: #383838;
-    -moz-text-fill-color: #383838;
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
     text-decoration: none;
     border: 0;
   }
@@ -98,13 +142,11 @@
     font-weight: bolder;
   }
 
-  textarea {
-    width: 100%;
-    font-size: 16px;
-  }
-
-  input {
-    font-size: 16px;
+  /* Touch screens: a 44px tall tap area for the nav links. Padding on an inline link
+     doesn't move the line, content-box keeps the gradient sized to the text, and
+     position: relative keeps the padding tappable where the next block starts close below. */
+  @media (pointer: coarse) {
+    nav a { position: relative; padding-block: 11px; background-origin: content-box; }
   }
 
   content {
@@ -124,13 +166,13 @@
     font-size: 16px;
     font-weight: 500;
     padding: 1px 4px 1px 4px;
-    background-color: #e4e6e8;
+    background-color: var(--code-bg);
     white-space: pre-wrap;
     overflow-x: auto;
   }
 
   pre code {
-    color: #383838;
+    color: var(--ink);
     display: block;
     padding: 20px;
     white-space: pre-wrap;
@@ -151,7 +193,6 @@
 
   blockquote {
     border-left: 1px solid #999;
-    color: #383838;
     padding-left: 20px;
     font-style: italic;
   }
@@ -159,16 +200,6 @@
   footer {
     padding: 25px;
     text-align: center;
-  }
-
-  .helptext {
-    color: #777;
-    font-size: small;
-  }
-
-  .errorlist {
-    color: #eba613;
-    font-size: small;
   }
 
   /* blog posts */
@@ -185,74 +216,9 @@
     flex: 0 0 130px;
   }
 
-  ul.blog-posts li a:visited {
-    color: #8b6fcb;
-  }
-
   @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #1d1f27;
-      color: #b9b9b9;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    strong,
-    b {
-      color: #b9b9b9;
-    }
-
-    a {
-      color: #8cc2dd;
-      background: rgb(162, 190, 204);
-      background: -moz-linear-gradient(135deg, rgba(162, 190, 204, 1) 0%, rgba(140, 194, 221, 1) 75%);
-      background: -webkit-linear-gradient(135deg, rgba(162, 190, 204, 1) 0%, rgba(140, 194, 221, 1) 75%);
-      background: linear-gradient(135deg, rgba(162, 190, 204, 1) 0%, rgba(140, 194, 221, 1) 75%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a2becc", endColorstr="#8cc2dd", GradientType=1);
-      background-clip: text;
-      background-size: cover;
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -moz-text-fill-color: transparent;
-      text-decoration: none;
-    }
-
-    .title {
-      -webkit-text-fill-color: #b9b9b9;
-      -moz-text-fill-color: #b9b9b9;
-      text-decoration: none;
-      border: 0;
-    }
-
-    code {
-      background-color: #2e2f35;
-    }
-
-    pre code {
-      color: #b9b9b9;
-    }
-
     div.highlight code {
       background-color: #17181a;
-    }
-
-    blockquote {
-      color: #ccc;
-    }
-
-    textarea,
-    input {
-      background-color: #252525;
-      color: #b9b9b9;
-    }
-
-    .helptext {
-      color: #aaa;
     }
   }
 </style>

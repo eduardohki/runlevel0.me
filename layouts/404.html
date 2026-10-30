@@ -1,0 +1,7 @@
+{{ define "title" }}Page Not Found | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<h1>404</h1>
+<p aria-hidden="true" style="font-size: 1.5em; font-weight: bold;">ʕノ•ᴥ•ʔノ ︵ ┻━┻</p>
+<p>There's nothing at this address. The page may have moved, or the link may have a typo. Try the <a href="{{ "/" | relURL }}">home page</a> or the <a href="{{ "/blog/" | relURL }}">blog</a>.</p>
+{{ end }}

@@ -18,35 +18,31 @@ url = "/"
     }
   }
 
-  /* Shared look with the CV page: soft cards with a neutral edge. */
-  :root { --home-card: #ffffff; --home-card-edge: #c4c9d4; --home-muted: #6b6b6b; --home-line: #d9dbe0; }
-  @media (prefers-color-scheme: dark) {
-    :root { --home-card: #262934; --home-card-edge: #4a5060; --home-muted: #8f94a0; --home-line: #3a3e4b; }
-  }
+  /* Shared look with the CV page: soft cards with a neutral edge (colour tokens live in style.html). */
   main blockquote, .home-card {
-    background: var(--home-card); border: 1px solid transparent; border-left: 4px solid var(--home-card-edge);
+    background: var(--card); border: 1px solid transparent; border-left: 4px solid var(--card-edge);
     border-radius: 10px; padding: 0.9rem 1.1rem; margin: 0.9rem 0; font-style: normal;
   }
   main blockquote p { margin: 0; }
   main blockquote em { font-style: normal; }
-  main blockquote p + p { margin-top: 0.5rem; font-size: 0.9em; color: var(--home-muted); text-align: right; }
+  main blockquote p + p { margin-top: 0.5rem; font-size: 0.9em; color: var(--muted); text-align: right; }
   .home-card p { margin: 0.2rem 0; }
-  .home-card .home-meta { font-size: 0.9em; color: var(--home-muted); }
+  .home-card .home-meta { font-size: 0.9em; color: var(--muted); }
   .home-cv-link { font-size: 1.15em; }
   .home-links { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
   .home-links a { text-decoration: none !important; }
   @media print {
-    main blockquote, .home-card { border: 1px solid var(--home-line); }
+    main blockquote, .home-card { border: 1px solid var(--line); }
   }
 </style>
 
 <div class="profile-container">
   <div id="picture">
-    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Software Engineer & Technical Leader" style="max-width: 250px; border-radius: 5px;">
+    <img src="/images/profile-picture.jpg" alt="Eduardo Hernacki, Software Engineer & Technical Leader" width="460" height="460" style="max-width: 250px; height: auto; border-radius: 5px;">
   </div>
   <div id="title" style="align-self: flex-start;">
-    <div style="text-align: left; margin-top: 0; line-height: 1.6;">
-      <h1 style="font-size: 1.6rem; line-height: 1.6; margin: 0;">Eduardo Hernacki</h1>
+    <div style="text-align: left; margin-top: 0; line-height: 1.4; text-wrap: pretty;">
+      <h1 style="margin: 0;">Eduardo Hernacki</h1>
       <div style="font-size: 1.4rem;">Software Engineer & Technical Leader</div>
       <div style="font-size: 1.2rem;"><em>Munich, Germany</em></div>
       <div style="margin-top: 0.5rem; font-size: 1.1rem; line-height: 1.5;">

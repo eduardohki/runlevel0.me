@@ -33,33 +33,31 @@
 
 
 <style>
-  /* Design tokens: restyle the whole CV from here. */
+  /* Design tokens: restyle the whole CV from here. The first six follow the site-wide
+     tokens in style.html (dark mode included); the rest are CV-only. */
   .cv {
-    --cv-ink: #383838;
-    --cv-muted: #6b6b6b;
-    --cv-line: #d9dbe0;
-    --cv-card: #ffffff;
+    --cv-ink: var(--ink);
+    --cv-muted: var(--muted);
+    --cv-line: var(--line);
+    --cv-card: var(--card);
+    --cv-ch-x: var(--card-edge);
+    --cv-grad: var(--link-grad);
     --cv-chip: #e8eaf0;
     --cv-accent: #2e2787;
     --cv-ch-0: #2e2787;
     --cv-ch-1: #4f6bd8;
     --cv-ch-2: #6fa3c7;
     --cv-ch-3: #a9b4c2;
-    --cv-ch-x: #c4c9d4;
     --cv-on-accent: #ffffff;
     --cv-on-accent-muted: #d8d6f0;
     --cv-radius: 10px;
-    --cv-grad: linear-gradient(135deg, #324ab2 0%, #2e2787 75%);
     /* Softer version for chips and tags: the link colours blended with some of the text colour. */
-    --cv-grad-soft: linear-gradient(135deg, color-mix(in srgb, #324ab2 75%, #383838) 0%, color-mix(in srgb, #2e2787 75%, #383838) 75%);
+    --cv-soft-mix: 75%;
+    --cv-grad-soft: linear-gradient(135deg, color-mix(in srgb, var(--link-from) var(--cv-soft-mix), var(--ink)) 0%, color-mix(in srgb, var(--link-to) var(--cv-soft-mix), var(--ink)) 75%);
     color: var(--cv-ink);
   }
-  @media (prefers-color-scheme: dark) {
+  @media screen and (prefers-color-scheme: dark) {
     .cv {
-      --cv-ink: #d3d5db;
-      --cv-muted: #8f94a0;
-      --cv-line: #3a3e4b;
-      --cv-card: #262934;
       --cv-chip: #343846;
       --cv-accent: #8cc2dd;
       --cv-on-accent: #1d1f27;
@@ -68,9 +66,7 @@
       --cv-ch-1: #6b83e6;
       --cv-ch-2: #4f86a8;
       --cv-ch-3: #5b6271;
-      --cv-ch-x: #4a5060;
-      --cv-grad: linear-gradient(135deg, #a2becc 0%, #8cc2dd 75%);
-      --cv-grad-soft: linear-gradient(135deg, color-mix(in srgb, #a2becc 50%, #d3d5db) 0%, color-mix(in srgb, #8cc2dd 50%, #d3d5db) 75%);
+      --cv-soft-mix: 50%;
     }
   }
   .cv h1, .cv h2, .cv h3, .cv strong, .cv b { color: var(--cv-ink); }
@@ -94,7 +90,7 @@
   .cv-stats { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1.4rem 0 0; }
   .cv-stat { flex: 1 1 130px; background: var(--cv-card); border: 1px solid transparent; border-radius: var(--cv-radius); padding: 0.7rem 0.9rem; }
   .cv-stat b { display: block; font-size: 1.45em; line-height: 1.15; color: var(--cv-accent); }
-  .cv-stat span { font-size: 0.78em; color: var(--cv-muted); }
+  .cv-stat span { display: block; font-size: 0.8em; line-height: 1.35; text-wrap: pretty; color: var(--cv-muted); }
 
   /* 3. Career at a Glance */
   .cv-bar { position: relative; height: 22px; background: var(--cv-chip); border-radius: 6px; overflow: hidden; }
@@ -116,6 +112,7 @@
     font: inherit; font-size: 0.82em; cursor: pointer; border: 1px solid var(--cv-line);
     background: var(--cv-card); color: var(--cv-ink); border-radius: 999px; padding: 0.25rem 0.7rem;
   }
+  .cv-chip:hover { border-color: var(--cv-accent); }
   .cv-chip small { color: var(--cv-muted); margin-left: 0.3rem; }
   .cv-chip[aria-pressed="true"] { background: var(--cv-accent); border-color: var(--cv-accent); color: var(--cv-on-accent); }
   .cv-chip[aria-pressed="true"] small { color: var(--cv-on-accent-muted); }
@@ -140,8 +137,8 @@
   .cv-card h3 { margin: 0; font-size: 1em; }
   .cv-meta { margin: 0.15rem 0 0.5rem; font-size: 0.83em; color: var(--cv-muted); }
   .cv-card p.cv-sum { margin: 0 0 0.5rem; }
-  .cv-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.75em; margin: 0.4rem 0; }
-  .cv-tags > span { background: var(--cv-chip); border-radius: 4px; padding: 0.05rem 0.45rem; }
+  .cv-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.8em; margin: 0.4rem 0; }
+  .cv-tags > span { background: var(--cv-chip); border-radius: 4px; padding: 0.15rem 0.5rem; }
   .cv-tags span.is-hit { background: var(--cv-accent); color: var(--cv-on-accent); }
   .cv-more { background: transparent !important; border: 1px dashed var(--cv-line); }
   .cv-more.is-hit { border-color: var(--cv-accent); color: var(--cv-accent); }
@@ -149,7 +146,7 @@
   .cv-card summary { cursor: pointer; color: var(--cv-accent); font-size: 0.92em; }
   .cv-card ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
   .cv-card li { margin: 0.25rem 0; }
-  .cv-alltech { margin: 0.5rem 0 0; font-size: 0.85em; color: var(--cv-muted); }
+  .cv-alltech { margin: 0.5rem 0 0; font-size: 0.9em; color: var(--cv-muted); }
 
   /* 6. Beyond the Day Job */
   .cv-beyond .cv-chapter-head { margin: 1.8rem 0 0.8rem; }
@@ -173,6 +170,13 @@
     .cv-chips-label { padding-top: 0; }
     .cv-ticks span:nth-child(even) { display: none; }
     .cv-cards { grid-template-columns: 1fr; }
+  }
+  /* Touch screens: taller tap areas for the skill chips and Details toggles. The chapter links
+     get theirs from the site-wide nav rule; their padding already spaces the rows, so no gap. */
+  @media (pointer: coarse) {
+    .cv-legend { row-gap: 0; }
+    .cv-chip { padding: 0.5rem 0.8rem; }
+    .cv-card summary { padding-block: 0.7rem; }
   }
   @media (forced-colors: active) {
     .cv-bar { forced-color-adjust: none; }
@@ -205,10 +209,6 @@
   }
 
   @media print {
-    .cv {
-      --cv-ink: #383838; --cv-muted: #6b6b6b; --cv-line: #d9dbe0; --cv-card: #ffffff;
-      --cv-chip: #e8eaf0; --cv-accent: #2e2787; --cv-on-accent: #ffffff;
-    }
     header, footer, .cv-glance, .cv-skills, .cv-skip, .cv-pdf { display: none !important; }
     body { background: #fff; font-size: 10pt; max-width: none; padding: 0; }
     .cv-card, .cv-stat { border: 1px solid var(--cv-line); break-inside: avoid; }
@@ -232,7 +232,7 @@
         {{- with $cv.contact.pdf }}<a class="cv-pdf" href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">Download PDF ↓<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}
       </p>
     </div>
-    <img class="cv-photo" src="{{ "images/profile-picture.jpg" | relURL }}" alt="" loading="lazy">
+    <img class="cv-photo" src="{{ "images/profile-picture.jpg" | relURL }}" alt="" width="120" height="120">
   </div>
 
   <!-- 2. Facts as boxes, then the summary -->
@@ -456,8 +456,12 @@
         var cols = getComputedStyle(g).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
         var heights = [];
         for (var i = 0; i < cols; i++) heights.push(0);
-        cards.forEach(function (c) {
-          var span = Math.ceil((c.getBoundingClientRect().height + parseFloat(getComputedStyle(c).marginBottom || 0)) / ROW);
+        // Measure every card first, then place them: measuring between placements forces a layout per card.
+        var spans = cards.map(function (c) {
+          return Math.ceil((c.getBoundingClientRect().height + parseFloat(getComputedStyle(c).marginBottom || 0)) / ROW);
+        });
+        cards.forEach(function (c, i) {
+          var span = spans[i];
           if (cols === 1 || c.classList.contains("is-wide")) {
             var top = Math.max.apply(null, heights);
             c.style.gridColumn = "1 / -1";

@@ -7,9 +7,7 @@
 </a>
 {{ end }}
 {{ if not hugo.IsServer }}
-<script src="https://getinsights.io/js/insights.js"></script>
-<script>
-  insights.init('AZklKKe2O7L_qE6W');
-  insights.trackPages();
-</script>
+{{- /* Async, so a slow or unreachable analytics host never holds back the page.
+       If a blocker stops the script, onload never fires and tracking is skipped. */}}
+<script async src="https://getinsights.io/js/insights.js" onload="insights.init('AZklKKe2O7L_qE6W'); insights.trackPages();"></script>
 {{ end }}
