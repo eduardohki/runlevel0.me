@@ -46,7 +46,7 @@ url = "/"
       <div style="font-size: 1.4rem;">Software Engineer & Technical Leader</div>
       <div style="font-size: 1.2rem;"><em>Munich, Germany</em></div>
       <div style="margin-top: 0.5rem; font-size: 1.1rem; line-height: 1.5;">
-        Hands-on practitioner who uplifts teams and practices, with expertise in the cloud and AI-augmented software engineering. Over a decade in regulated industries, and an organizer of Munich's BEAM and functional programming meetups.
+        Hands-on practitioner who uplifts teams and practices, with expertise in the cloud and AI-augmented software engineering. Working in regulated industries since 2014, and an organizer of Munich's BEAM and functional programming meetups.
       </div>
     </div>
   </div>
@@ -78,11 +78,15 @@ Over more than a decade in regulated industries, I've learned that most software
 
 ## What I'm Working On
 
-These days I work on AI-augmented Engineering in the financial services industry, alongside the teams that use it, helping them get from intent to working software faster without compromising quality. AI amplifies whatever process it lands in, so most of the work happens around the model: clear requirements and the right context before any code, verification built into the flow, and shared standards many teams can rely on. It also means knowing where to stop: agents shouldn't guess what nobody has decided, replace an engineer's understanding, or touch data they shouldn't. The result is faster feedback, less toil and a shared language between product and engineering, while the team stays accountable for what it delivers.
+These days I help engineering teams at a financial services client make AI agents part of everyday software delivery, building the tooling with them as it grew from zero to dozens of developers across three engineering groups. What I've learned is that AI amplifies whatever process it lands in, so the ways of working must adapt to its new constraints and risks with clear requirements, the right context and firm limits on agent autonomy, since judgment and discernment are what only people bring.
 
 ## The BEAM & Functional Programming
 
-I prefer functional programming, and I lean towards [Gleam](https://gleam.run) for modeling business logic and building web applications. I organize the [Elixir, Erlang & Gleam Munich Meetup](https://www.meetup.com/elixir-munich/) and the [FP Stammtisch Munich](https://luma.com/fp-munich), and I'm always keen to hear from teams running the BEAM in production.
+I prefer functional programming, and I lean towards [Gleam](https://gleam.run) for modeling business logic and building web applications.
+
+Gleam runs on [the BEAM](https://gotopia.tech/sessions/1013/the-soul-of-erlang-and-elixir), the virtual machine behind [Erlang](https://www.erlang.org/) and [Elixir](https://elixir-lang.org/), which allows for high concurrency, fault tolerance and efficient resource management, making it ideal for scalable systems. What I like most about the BEAM is its resiliency, its great community and how simple it is to build and operate, letting teams do more with less where other technologies need extra cloud infrastructure for the same capabilities.
+
+I organize the [Elixir, Erlang & Gleam Munich Meetup](https://www.meetup.com/elixir-munich/) and the [FP Stammtisch Munich](https://luma.com/fp-munich), and I'm always keen to hear from teams running the BEAM in production.
 
 ## Talks
 
@@ -109,7 +113,7 @@ Why Kubernetes can be overkill on AWS, and how to run BEAM applications on ECS F
 
 ## Background
 
-- Over a decade in software and cloud across financial services, payments, credit, healthcare and manufacturing
+- In software and cloud since 2017, across financial services, payments, credit, healthcare and manufacturing
 - Claude Certified Architect - Foundations (Anthropic, 2026)
 - Based in Munich, fluent in **German, English and Portuguese**
 
