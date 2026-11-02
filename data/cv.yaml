@@ -12,7 +12,7 @@
 
 contact:
   email: services@runlevel0.me
-  # Conservative PDF version for recruiters, built from the LaTeX CV repo.
+  # Conservative PDF version for recruiters, built from the Typst CV repo.
   pdf: /files/CV-Eduardo_Hernacki.pdf
   links:
     - label: LinkedIn
