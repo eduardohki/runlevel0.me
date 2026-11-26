@@ -1,0 +1,38 @@
+{#- Components shared by the templates. Tera registers them globally, so they need no import. -#}
+
+{#- A dated list of blog posts: the blog index and the tag/category pages. -#}
+{% component post_list(pages: array) %}
+  <ul class="blog-posts">
+    {% for p in pages %}
+    <li>
+      <span>
+        <i>
+          <time datetime='{{ p.date | date(format="%Y-%m-%d") }}' pubdate>
+            {{ p.date | date(format="%d %b, %Y") }}
+          </time>
+        </i>
+      </span>
+      <a href="{{ p.permalink }}">{{ p.title }}</a>
+    </li>
+    {% else %}
+    <li>
+      No posts yet
+    </li>
+    {% endfor %}
+  </ul>
+{% endcomponent post_list %}
+
+{#- A role's length on the CV, e.g. "2 yrs 3 mo". -#}
+{% component cv_duration(months: integer) -%}
+  {%- set y = months // 12 -%}{%- set m = months % 12 -%}
+  {%- if y > 0 %}{{ y }} yr{% if y > 1 %}s{% endif %}{% endif -%}
+  {%- if y > 0 and m > 0 %} {% endif -%}
+  {%- if m > 0 %}{{ m }} mo{% endif -%}
+{%- endcomponent cv_duration %}
+
+{#- "2023-05" -> "May 2023". -#}
+{% component cv_month(ym: string) -%}
+  {%- set names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] -%}
+  {%- set parts = ym | split(pat="-") -%}
+  {{ names[(parts[1] | int) - 1] }} {{ parts[0] }}
+{%- endcomponent cv_month %}

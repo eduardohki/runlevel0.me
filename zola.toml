@@ -1,0 +1,36 @@
+base_url = "https://runlevel0.me"
+title = "Eduardo Hernacki"
+# Fallback description for pages and sections without their own (meta tags and feeds).
+description = "Eduardo Hernacki"
+default_language = "en-us"
+author = "Eduardo Hernacki"
+
+# RSS feeds at the URLs the Hugo site used: /index.xml, /blog/index.xml and one per tag/category.
+# A non-default filename needs its own template, see templates/index.xml.
+generate_feeds = true
+feed_filenames = ["index.xml"]
+
+# HTML minification stays off: it drops the spaces between the nav links, which changes their spacing.
+
+taxonomies = [
+  { name = "tags", feed = true },
+  { name = "categories", feed = true },
+]
+
+[markdown]
+# Curly quotes and dashes, as Hugo's typographer produced.
+smart_punctuation = true
+# Plain links: no rel="external". The home page opens external links in a new tab in its template.
+external_links_external = false
+
+[markdown.highlighting]
+theme = "monokai"
+error_on_missing_language = true
+
+[extra]
+# First year in the footer's copyright line.
+since = 2024
+# Preview image for link cards (Open Graph, Twitter, schema.org).
+image = "images/favicon.png"
+# getinsights.io project; the script is left out under `zola serve`.
+insights_id = "AZklKKe2O7L_qE6W"

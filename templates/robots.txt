@@ -1,0 +1,2 @@
+User-Agent: *
+Sitemap: {{ get_url(path="sitemap.xml") }}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block feed %}<link rel="alternate" type="application/rss+xml" href="{{ section.permalink }}index.xml" title="{{ config.title }}" />{% endblock feed %}
+
+{% block main %}
+<content>
+  {#- A page heading for screen readers; the nav already says where we are. #}
+  <h1 class="sr-only">{{ section.title }}</h1>
+  {{ <post_list pages={section.pages} /> }}
+  <small>
+    <div>
+      {% set tags = get_taxonomy(kind="tags") %}
+      {% for t in tags.items %}
+      <a href="{{ t.permalink }}">#{{ t.name }}</a>&nbsp;
+      {% endfor %}
+    </div>
+  </small>
+</content>
+{% endblock main %}

@@ -1,35 +1,34 @@
-{{- define "partials/inline/cv-duration.html" -}}
-  {{- $y := div . 12 -}}{{- $m := mod . 12 -}}
-  {{- if gt $y 0 }}{{ $y }} yr{{ if gt $y 1 }}s{{ end }}{{ end -}}
-  {{- if and (gt $y 0) (gt $m 0) }} {{ end -}}
-  {{- if gt $m 0 }}{{ $m }} mo{{ end -}}
-{{- end -}}
+{#- The CV page, generated from data/cv.yaml. -#}
+{% extends "base.html" %}
 
-{{ define "main" }}
-{{- $cv := site.Data.cv -}}
+{% block title %}{{ page.title }}{% endblock title %}
 
-{{- /* Month index helpers: YYYY-MM -> year*12 + month. "present" -> current month. */ -}}
-{{- $nowIdx := add (mul (int (now.Format "2006")) 12) (int (now.Format "1")) -}}
-{{- $minIdx := $nowIdx -}}
-{{- $skillMonths := newScratch -}}
-{{- $entries := slice -}}
-{{- range $ci, $ch := $cv.chapters -}}
-  {{- range $ei, $e := $ch.entries -}}
-    {{- $s := time.AsTime (printf "%s-01" $e.start) -}}
-    {{- $sIdx := add (mul (int ($s.Format "2006")) 12) (int ($s.Format "1")) -}}
-    {{- $eIdx := $nowIdx -}}
-    {{- if ne (string $e.end) "present" -}}
-      {{- $t := time.AsTime (printf "%s-01" $e.end) -}}
-      {{- $eIdx = add (mul (int ($t.Format "2006")) 12) (int ($t.Format "1")) -}}
-    {{- end -}}
-    {{- $months := add (sub $eIdx $sIdx) 1 -}}
-    {{- if lt $sIdx $minIdx }}{{ $minIdx = $sIdx }}{{ end -}}
-    {{- /* Collect the months per skill as a set, so overlapping roles are not counted twice. */ -}}
-    {{- range $e.tech }}{{ $skillMonths.Add . (seq $sIdx $eIdx) }}{{ end -}}
-    {{- $entries = $entries | append (dict "e" $e "chapter" $ci "id" (printf "role-%d-%d" $ci $ei) "sIdx" $sIdx "eIdx" $eIdx "months" $months) -}}
-  {{- end -}}
-{{- end -}}
-{{- $span := add (sub $nowIdx $minIdx) 1 -}}
+{% block main %}
+{%- set cv = load_data(path="data/cv.yaml") -%}
+
+{#- Months are counted as year * 12 + month; "present" is the current month.
+    `entries` flattens the chapters' roles with their month range and card id. -#}
+{%- set now_ym = now() | date(format="%Y-%m") -%}
+{%- set now_parts = now_ym | split(pat="-") -%}
+{%- set now_idx = (now_parts[0] | int) * 12 + (now_parts[1] | int) -%}
+{%- set_global min_idx = now_idx -%}
+{%- set_global entries = [] -%}
+{%- for ch in cv.chapters -%}
+  {%- set ci = loop.index0 -%}
+  {%- for e in ch.entries -%}
+    {%- set sp = e.start | split(pat="-") -%}
+    {%- set ep = (now_ym if e.end == "present" else e.end) | split(pat="-") -%}
+    {%- set s_idx = (sp[0] | int) * 12 + (sp[1] | int) -%}
+    {%- set e_idx = (ep[0] | int) * 12 + (ep[1] | int) -%}
+    {%- set_global min_idx = s_idx if s_idx < min_idx else min_idx -%}
+    {%- set_global entries = [...entries, {
+      "e": e, "chapter": ci, "id": "role-" ~ ci ~ "-" ~ loop.index0,
+      "s_idx": s_idx, "e_idx": e_idx, "months": e_idx - s_idx + 1,
+      "wide": ch.entries | length == 1,
+    }] -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- set span = now_idx - min_idx + 1 %}
 
 
 <style>
@@ -225,41 +224,41 @@
   <div class="cv-head">
     <div class="cv-head-text">
       <h1>Eduardo Hernacki</h1>
-      <p class="cv-sub">{{ $cv.title }} <span>· {{ $cv.location }}</span></p>
+      <p class="cv-sub">{{ cv.title }} <span>· {{ cv.location }}</span></p>
       <p class="cv-links">
-        <a href="mailto:{{ $cv.contact.email }}">{{ $cv.contact.email }}</a>
-        {{- range $cv.contact.links }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }}<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}
-        {{- with $cv.contact.pdf }}<a class="cv-pdf" href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">Download PDF ↓<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}
+        <a href="mailto:{{ cv.contact.email }}">{{ cv.contact.email }}</a>
+        {%- for l in cv.contact.links %}<a href="{{ l.url }}" target="_blank" rel="noopener noreferrer">{{ l.label }}<span class="sr-only"> (opens in a new tab)</span></a>{% endfor %}
+        {%- if cv.contact?.pdf %}<a class="cv-pdf" href="{{ get_url(path=cv.contact.pdf) }}" target="_blank" rel="noopener noreferrer">Download PDF ↓<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}
       </p>
     </div>
-    <img class="cv-photo" src="{{ "images/profile-picture.jpg" | relURL }}" alt="" width="120" height="120">
+    <img class="cv-photo" src="{{ get_url(path='images/profile-picture.jpg') }}" alt="" width="120" height="120">
   </div>
 
   <!-- 2. Facts as boxes, then the summary -->
   <div class="cv-stats">
-    {{ range $cv.stats }}<div class="cv-stat"><b class="cv-gt">{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}
+    {% for s in cv.stats %}<div class="cv-stat"><b class="cv-gt">{{ s.value }}</b><span>{{ s.label }}</span></div>{% endfor %}
   </div>
-  <div class="cv-summary">{{ .Content }}</div>
+  <div class="cv-summary">{{ page.content | safe }}</div>
 
   <!-- 3. Career at a Glance -->
   <section class="cv-glance" aria-labelledby="cv-glance-title">
     <h2 id="cv-glance-title">Career at a Glance</h2>
     <div class="cv-bar" aria-hidden="true">
-      {{ range $entries }}{{ if ne .e.timeline false }}
-        {{- $left := div (mul (float (sub .sIdx $minIdx)) 100) $span -}}
-        {{- $width := div (mul (float .months) 100) $span -}}
-        <a class="cv-seg" href="#{{ .id }}" tabindex="-1" data-target="{{ .id }}" title="{{ .e.role }}{{ with .e.org }} · {{ . }}{{ end }}"
-           style="left: {{ $left }}%; width: {{ $width }}%; background: var(--cv-ch-{{ .chapter }});"></a>
-      {{- end }}{{ end }}
+      {% for x in entries %}{% if x.e?.timeline is undefined or x.e.timeline %}
+        {%- set left = (x.s_idx - min_idx) * 100 / span -%}
+        {%- set width = x.months * 100 / span -%}
+        <a class="cv-seg" href="#{{ x.id }}" tabindex="-1" data-target="{{ x.id }}" title="{{ x.e.role }}{% if x.e?.org %} · {{ x.e.org }}{% endif %}"
+           style="left: {{ left }}%; width: {{ width }}%; background: var(--cv-ch-{{ x.chapter }});"></a>
+      {%- endif %}{% endfor %}
     </div>
     <div class="cv-ticks" aria-hidden="true">
-      {{ $firstYear := div $minIdx 12 }}{{ $lastYear := div $nowIdx 12 }}
-      {{ range seq $firstYear 2 $lastYear }}{{ if ge (sub (mul . 12) $minIdx) 0 }}
-        <span style="left: {{ div (mul (float (sub (add (mul . 12) 1) $minIdx)) 100) $span }}%">{{ . }}</span>
-      {{ end }}{{ end }}
+      {% set first_year = min_idx // 12 %}{% set last_year = now_idx // 12 %}
+      {% for y in range(start=first_year, end=last_year + 1, step_by=2) %}{% if y * 12 - min_idx >= 0 %}
+        <span style="left: {{ (y * 12 + 1 - min_idx) * 100 / span }}%">{{ y }}</span>
+      {% endif %}{% endfor %}
     </div>
     <nav class="cv-legend" aria-label="Career chapters">
-      {{ range $i, $ch := $cv.chapters }}<a href="#chapter-{{ $i }}"><i style="background: var(--cv-ch-{{ $i }})"></i>{{ $ch.title }}</a>{{ end }}
+      {% for ch in cv.chapters %}<a href="#chapter-{{ loop.index0 }}"><i style="background: var(--cv-ch-{{ loop.index0 }})"></i>{{ ch.title }}</a>{% endfor %}
     </nav>
   </section>
 
@@ -271,19 +270,22 @@
     <p class="cv-hint" hidden data-js>Pick one or more focus areas or skills to highlight the roles where they were used.</p>
     <div class="cv-chiprow">
       <span class="cv-chips-label">Focus</span>
-      <div class="cv-chips">{{ range $cv.hats }}<button type="button" class="cv-chip" data-kind="hat" data-key="{{ .key }}" aria-pressed="false"><span class="cv-gt">{{ .label }}</span></button>{{ end }}</div>
+      <div class="cv-chips">{% for h in cv.hats %}<button type="button" class="cv-chip" data-kind="hat" data-key="{{ h.key }}" aria-pressed="false"><span class="cv-gt">{{ h.label }}</span></button>{% endfor %}</div>
     </div>
-    {{ range $cv.skill_groups }}
+    {% for g in cv.skill_groups %}
     <div class="cv-chiprow">
-      <span class="cv-chips-label">{{ .label }}</span>
+      <span class="cv-chips-label">{{ g.label }}</span>
       <div class="cv-chips">
-        {{- range .skills }}
-          {{- $m := len (uniq (index $skillMonths.Values . | default slice)) -}}
-          <button type="button" class="cv-chip" data-kind="tech" data-key="{{ . }}" aria-pressed="false"><span class="cv-gt">{{ . }}</span>{{ if gt $m 0 }}{{ $y := int (math.Ceil (div (float $m) 12)) }}<small>{{ $y }} yr{{ if gt $y 1 }}s{{ end }}</small>{{ end }}</button>
-        {{- end }}
+        {%- for skill in g.skills %}
+          {#- The months a skill was used, as a set, so overlapping roles are not counted twice. -#}
+          {%- set_global skill_months = [] -%}
+          {%- for x in entries %}{% if skill in x.e.tech %}{% set_global skill_months = [...skill_months, ...range(start=x.s_idx, end=x.e_idx + 1)] %}{% endif %}{% endfor -%}
+          {%- set m = skill_months | unique | length -%}
+          <button type="button" class="cv-chip" data-kind="tech" data-key="{{ skill }}" aria-pressed="false"><span class="cv-gt">{{ skill }}</span>{% if m > 0 %}{% set y = (m / 12) | round(method="ceil") | int %}<small>{{ y }} yr{% if y > 1 %}s{% endif %}</small>{% endif %}</button>
+        {%- endfor %}
       </div>
     </div>
-    {{ end }}
+    {% endfor %}
     <div class="cv-statusbar">
       <p class="cv-status" role="status" aria-live="polite"></p>
       <button type="button" class="cv-clear" hidden>Clear Selection</button>
@@ -292,27 +294,27 @@
 
   <!-- 5. Experience -->
   <span id="experience"></span>
-  {{ range $ci, $ch := $cv.chapters }}
-  <section class="cv-chapter" id="chapter-{{ $ci }}" style="--cv-ch: var(--cv-ch-{{ $ci }})">
-    <div class="cv-chapter-head"><h2>{{ $ch.title }}</h2><span>{{ $ch.period }}</span></div>
+  {% for ch in cv.chapters %}{% set ci = loop.index0 %}
+  <section class="cv-chapter" id="chapter-{{ ci }}" style="--cv-ch: var(--cv-ch-{{ ci }})">
+    <div class="cv-chapter-head"><h2>{{ ch.title }}</h2><span>{{ ch.period }}</span></div>
     <div class="cv-cards">
-      {{ range $entries }}{{ if eq .chapter $ci }}{{ $e := .e }}
-      <article class="cv-card{{ if eq (len $ch.entries) 1 }} is-wide{{ end }}" id="{{ .id }}" data-hats="{{ delimit $e.hats "|" }}" data-tech="{{ delimit $e.tech "|" }}">
-        <h3>{{ $e.role }}{{ with $e.org }} · {{ . }}{{ end }}</h3>
-        <p class="cv-meta">{{ $e.context }} · {{ (time.AsTime (printf "%s-01" $e.start)).Format "Jan 2006" }} - {{ if eq (string $e.end) "present" }}Present{{ else }}{{ (time.AsTime (printf "%s-01" $e.end)).Format "Jan 2006" }}{{ end }} · {{ partial "inline/cv-duration.html" .months }}</p>
-        <p class="cv-sum">{{ $e.summary }}</p>
-        {{- $max := 6 -}}
-        <div class="cv-tags">{{ range first $max $e.tech }}<span><span class="cv-gt">{{ . }}</span></span>{{ end }}{{ if gt (len $e.tech) $max }}<span class="cv-more"><span class="cv-gt">+{{ sub (len $e.tech) $max }}</span><span class="cv-vh"> more, listed under Technologies Used in the details</span></span>{{ end }}</div>
-        <details{{ if eq $ci 0 }} open{{ end }}>
+      {% for x in entries %}{% if x.chapter == ci %}{% set e = x.e %}
+      <article class="cv-card{% if x.wide %} is-wide{% endif %}" id="{{ x.id }}" data-hats="{{ e.hats | join(sep='|') }}" data-tech="{{ e.tech | join(sep='|') }}">
+        <h3>{{ e.role }}{% if e?.org %} · {{ e.org }}{% endif %}</h3>
+        <p class="cv-meta">{{ e.context }} · {{ <cv_month ym={e.start} /> }} - {% if e.end == "present" %}Present{% else %}{{ <cv_month ym={e.end} /> }}{% endif %} · {{ <cv_duration months={x.months} /> }}</p>
+        <p class="cv-sum">{{ e.summary }}</p>
+        {#- Six tags on the card; the rest are listed in the details. -#}
+        <div class="cv-tags">{% for t in e.tech[:6] %}<span><span class="cv-gt">{{ t }}</span></span>{% endfor %}{% if e.tech | length > 6 %}<span class="cv-more"><span class="cv-gt">+{{ (e.tech | length) - 6 }}</span><span class="cv-vh"> more, listed under Technologies Used in the details</span></span>{% endif %}</div>
+        <details{% if ci == 0 %} open{% endif %}>
           <summary>Details</summary>
-          <ul>{{ range $e.highlights }}<li>{{ . | markdownify }}</li>{{ end }}</ul>
-          <p class="cv-alltech"><strong>Technologies Used:</strong> {{ with $e.tech_used }}{{ . }}{{ else }}{{ delimit $e.tech ", " }}{{ end }}</p>
+          <ul>{% for h in e.highlights %}<li>{{ h | markdown(inline=true) | safe }}</li>{% endfor %}</ul>
+          <p class="cv-alltech"><strong>Technologies Used:</strong> {{ e?.tech_used or (e.tech | join(sep=", ")) }}</p>
         </details>
       </article>
-      {{ end }}{{ end }}
+      {% endif %}{% endfor %}
     </div>
   </section>
-  {{ end }}
+  {% endfor %}
 
   <!-- 6. Beyond the Day Job: same structure as the experience chapters -->
   <section class="cv-beyond" aria-labelledby="cv-beyond-title" style="--cv-ch: var(--cv-ch-x)">
@@ -320,60 +322,60 @@
 
     <div class="cv-chapter-head"><h3>Community</h3></div>
     <div class="cv-cards">
-      {{ range $cv.community }}
-      <article class="cv-card cv-extra" data-tech="{{ delimit (.tech | default slice) "|" }}">
-        <h4>{{ .role }} · {{ .name }}</h4>
-        <p class="cv-meta">Munich · {{ .period }}</p>
-        <p class="cv-sum">{{ .description }}</p>
-        <p class="cv-extra-links">{{ range $i, $l := .links }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}" target="_blank" rel="noopener noreferrer">{{ $l.label }}<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}</p>
+      {% for c in cv.community %}
+      <article class="cv-card cv-extra" data-tech="{{ (c?.tech or []) | join(sep='|') }}">
+        <h4>{{ c.role }} · {{ c.name }}</h4>
+        <p class="cv-meta">Munich · {{ c.period }}</p>
+        <p class="cv-sum">{{ c.description }}</p>
+        <p class="cv-extra-links">{% for l in c.links %}{% if not loop.first %} · {% endif %}<a href="{{ l.url }}" target="_blank" rel="noopener noreferrer">{{ l.label }}<span class="sr-only"> (opens in a new tab)</span></a>{% endfor %}</p>
       </article>
-      {{ end }}
+      {% endfor %}
     </div>
 
     <div class="cv-chapter-head"><h3>Talks</h3></div>
     <div class="cv-cards">
-      {{ range $cv.talks }}
-      <article class="cv-card cv-extra is-wide" data-tech="{{ delimit (.tech | default slice) "|" }}">
-        <h4>{{ .title }}</h4>
-        {{ with .meta }}<p class="cv-meta">{{ . }}</p>{{ end }}
-        <p class="cv-sum">{{ .description }}</p>
+      {% for talk in cv.talks %}
+      <article class="cv-card cv-extra is-wide" data-tech="{{ (talk?.tech or []) | join(sep='|') }}">
+        <h4>{{ talk.title }}</h4>
+        {% if talk?.meta %}<p class="cv-meta">{{ talk.meta }}</p>{% endif %}
+        <p class="cv-sum">{{ talk.description }}</p>
         <ul class="cv-deliveries">
-          {{ range .deliveries }}<li><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .event }}<span class="sr-only"> (opens in a new tab)</span></a> <span class="cv-muted">· {{ .place }} · {{ .date }}</span>{{ with .recording }} · <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Recording<span class="sr-only"> (opens in a new tab)</span></a>{{ end }}</li>{{ end }}
+          {% for d in talk.deliveries %}<li><a href="{{ d.url }}" target="_blank" rel="noopener noreferrer">{{ d.event }}<span class="sr-only"> (opens in a new tab)</span></a> <span class="cv-muted">· {{ d.place }} · {{ d.date }}</span>{% if d?.recording %} · <a href="{{ d.recording }}" target="_blank" rel="noopener noreferrer">Recording<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}</li>{% endfor %}
         </ul>
       </article>
-      {{ end }}
+      {% endfor %}
     </div>
 
     <div class="cv-chapter-head"><h3>Certifications</h3></div>
     <div class="cv-cards">
-      {{ range $cv.certifications }}
+      {% for cert in cv.certifications %}
       <article class="cv-card cv-extra">
-        <h4>{{ .name }} · {{ .issuer }}</h4>
-        <p class="cv-meta">{{ .period }}</p>
-        {{ with .url }}<p class="cv-extra-links"><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Show Credential<span class="sr-only"> (opens in a new tab)</span></a></p>{{ end }}
+        <h4>{{ cert.name }} · {{ cert.issuer }}</h4>
+        <p class="cv-meta">{{ cert.period }}</p>
+        {% if cert?.url %}<p class="cv-extra-links"><a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">Show Credential<span class="sr-only"> (opens in a new tab)</span></a></p>{% endif %}
       </article>
-      {{ end }}
+      {% endfor %}
     </div>
 
     <div class="cv-chapter-head"><h3>Education</h3></div>
     <div class="cv-cards">
-      {{ range $cv.education }}
+      {% for ed in cv.education %}
       <article class="cv-card cv-extra">
-        <h4>{{ .name }} · {{ .org }}</h4>
-        <p class="cv-meta">{{ .place }} · {{ .period }}</p>
-        {{ with .note }}<p class="cv-sum">{{ . }}</p>{{ end }}
+        <h4>{{ ed.name }} · {{ ed.org }}</h4>
+        <p class="cv-meta">{{ ed.place }} · {{ ed.period }}</p>
+        {% if ed?.note %}<p class="cv-sum">{{ ed.note }}</p>{% endif %}
       </article>
-      {{ end }}
+      {% endfor %}
     </div>
 
     <div class="cv-chapter-head"><h3>Languages</h3></div>
     <div class="cv-cards cv-cards-small">
-      {{ range $cv.languages }}
+      {% for language in cv.languages %}
       <article class="cv-card cv-extra">
-        <h4>{{ .name }}</h4>
-        <p class="cv-meta">{{ .level }}</p>
+        <h4>{{ language.name }}</h4>
+        <p class="cv-meta">{{ language.level }}</p>
       </article>
-      {{ end }}
+      {% endfor %}
     </div>
   </section>
 </div>
@@ -493,4 +495,4 @@
     window.addEventListener("afterprint", function () { opened.forEach(function (d) { d.open = false; }); opened = []; });
   })();
 </script>
-{{ end }}
+{% endblock main %}

@@ -27,34 +27,33 @@ jobs:
     permissions:
       contents: read
     env:
-      HUGO_VERSION: 0.122.0
-      # sha256 of hugo_extended_0.122.0_linux-amd64.deb, from the release's checksums.txt
-      HUGO_SHA256: 7e546a436b82b2a9ac8f27dc3ac1f18884952b7af57a9e29745eb283ee639330
-      HUGO_ENVIRONMENT: production
+      ZOLA_VERSION: 0.23.6
+      # sha256 of zola-v0.23.6-x86_64-unknown-linux-gnu.tar.gz. Zola publishes no checksums
+      # file; this matches the digest GitHub records for the release asset.
+      ZOLA_SHA256: 8f5132b3522412d04e395e0b25f6d68613ad272a873e54a2b3ebf664873024a4
+      # The footer's copyright year comes from the build date.
       TZ: Europe/Berlin
     steps:
-      - name: Install Hugo (extended, checksum-verified)
+      - name: Install Zola (checksum-verified)
         run: |
-          deb="${RUNNER_TEMP}/hugo.deb"
+          tarball="${RUNNER_TEMP}/zola.tar.gz"
           curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
-            --output "$deb" \
-            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
-          echo "${HUGO_SHA256}  ${deb}" | sha256sum --check --strict -
-          sudo dpkg -i "$deb"
-          hugo version
+            --output "$tarball" \
+            "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${ZOLA_SHA256}  ${tarball}" | sha256sum --check --strict -
+          tar --extract --gzip --file "$tarball" --directory "$RUNNER_TEMP" zola
+          "${RUNNER_TEMP}/zola" --version
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          submodules: recursive
-          fetch-depth: 0
           persist-credentials: false
 
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - name: Build
-        run: hugo --gc --minify --baseURL "https://runlevel0.me/"
+        run: '"${RUNNER_TEMP}/zola" build'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0

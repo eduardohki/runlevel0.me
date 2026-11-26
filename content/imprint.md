@@ -1,6 +1,5 @@
 +++
 title = "Imprint"
-url = "/imprint/"
 +++
 
 # Imprint

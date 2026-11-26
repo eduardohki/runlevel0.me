@@ -108,8 +108,8 @@
   }
 
   /* Code blocks: lift Monokai's comment grey and keyword pink slightly so they meet contrast. */
-  pre span[style*="color:#75715e"] { color: #9a957e !important; }
-  pre span[style*="color:#f92672"] { color: #fb4b8b !important; }
+  pre span[style*="#88846F"] { color: #9a957e !important; }
+  pre span[style*="#F92672"] { color: #fb4b8b !important; }
 
   /* The nav sits at the top of every page; keep some room above it. */
   header > nav:first-child { margin-top: 1.5em; }
@@ -181,14 +181,30 @@
     overflow-x: auto;
   }
 
-  div.highlight pre {
+  pre.giallo {
     background-color: initial;
     color: initial;
+    tab-size: 4;
   }
 
-  div.highlight code {
+  /* Keep the plain Monokai look: no underlined types or italic parameters. */
+  pre.giallo span {
+    text-decoration: none !important;
+    font-style: normal !important;
+  }
+
+  pre.giallo code {
     background-color: #232428;
     color: unset;
+  }
+
+  /* One span per line from the highlighter (Giallo). Top-aligned, so an empty line is
+     exactly one line tall instead of also taking the descender space below the baseline. */
+  .giallo-l {
+    display: inline-block;
+    min-height: 1lh;
+    width: 100%;
+    vertical-align: top;
   }
 
   blockquote {
@@ -217,7 +233,7 @@
   }
 
   @media screen and (prefers-color-scheme: dark) {
-    div.highlight code {
+    pre.giallo code {
       background-color: #17181a;
     }
   }

@@ -1,0 +1,35 @@
+{#- Page skeleton. Structure and styles derive from the hugo-bearblog theme by Jan Raasch
+    (MIT License, see THIRD-PARTY-NOTICES.md).
+
+    `hero` marks pages that show the name in their own hero (home and CV, via `extra.hero`
+    in their front matter): they skip the site title under the nav, and their external
+    links open in a new tab. -#}
+{%- set hero = page?.extra?.hero or section?.extra?.hero or false -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {%- include "partials/favicon.html" %}
+  <title>{% block title %}{% endblock title %} | {{ config.title }}</title>
+  {%- include "partials/seo.html" %}
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  {% block feed %}{% endblock feed %}
+  {%- include "partials/style.html" %}
+</head>
+
+<body>
+  <header>
+    {%- include "partials/header.html" %}
+  </header>
+  <main>
+    {%- block main %}{% endblock main %}
+  </main>
+  <footer>
+    {%- include "partials/footer.html" %}
+  </footer>
+</body>
+
+</html>

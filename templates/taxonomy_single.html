@@ -1,0 +1,17 @@
+{#- One tag or category: the blog list, filtered. -#}
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }}{% endblock title %}
+
+{% block feed %}<link rel="alternate" type="application/rss+xml" href="{{ term.permalink }}index.xml" title="{{ config.title }}" />{% endblock feed %}
+
+{% block main %}
+<content>
+  <h1 class="sr-only">{{ term.name }}</h1>
+  <h3 style="margin-bottom:0">Filtering for "{{ term.name }}"</h3>
+  <small>
+    <a href="{{ get_url(path='@/blog/_index.md') }}">Remove filter</a>
+  </small>
+  {{ <post_list pages={term.pages} /> }}
+</content>
+{% endblock main %}

@@ -1,0 +1,75 @@
+{#- Meta tags for search engines and link previews (Open Graph, Twitter, schema.org),
+    matching what the Hugo theme generated. All values are HTML-escaped before `desc`
+    is printed with `safe`. -#}
+{%- set image = get_url(path=config.extra.image) -%}
+{%- if page is defined -%}
+  {%- set meta_title = page.title -%}
+  {%- set meta_url = page.permalink -%}
+  {%- if page.description -%}
+    {%- set desc = page.description | escape_html -%}
+  {%- else -%}
+    {#- Without a description, use the start of the text: tags stripped, cut after the
+        sentence that reaches 70 words (Hugo's automatic summary). The rendered content
+        is already HTML-escaped, so the result is safe inside an attribute. -#}
+    {%- set plain = page.content | regex_replace(pattern=`<[^>]*>`, rep=` `) | regex_replace(pattern=`[[:space:]]+`, rep=` `) | trim -%}
+    {%- set desc = plain | regex_replace(pattern=`^((?:[^ ]+ ){70}[^.!?]*[.!?]) .*$`, rep=`$1`) -%}
+  {%- endif -%}
+  {%- set tags = page.taxonomies?.tags or [] -%}
+  {%- set keywords = [t ~ "," for t in tags] | join(sep="") -%}
+{%- else -%}
+  {%- if section is defined -%}
+    {%- set meta_title = section.title -%}
+    {%- set meta_url = section.permalink -%}
+    {%- set desc = (section.description or config.description) | escape_html -%}
+  {%- elif term is defined -%}
+    {%- set meta_title = term.name -%}
+    {%- set meta_url = term.permalink -%}
+    {%- set desc = config.description | escape_html -%}
+  {%- elif terms is defined -%}
+    {%- set meta_title = taxonomy.name | capitalize -%}
+    {%- set meta_url = current_url -%}
+    {%- set desc = config.description | escape_html -%}
+  {%- else -%}
+    {%- set meta_title = "404 Page not found" -%}
+    {%- set meta_url = get_url(path="404.html") -%}
+    {%- set desc = config.description | escape_html -%}
+  {%- endif -%}
+  {%- set categories = get_taxonomy(kind="categories") -%}
+  {%- set tags = get_taxonomy(kind="tags") -%}
+  {%- set all_terms = [...categories.items, ...tags.items] -%}
+  {%- set keywords = [t.slug ~ "," for t in all_terms] | join(sep="") -%}
+{%- endif %}
+<meta name="title" content="{{ meta_title }}" />
+<meta name="description" content="{{ desc | safe }}" />
+<meta name="keywords" content="{{ keywords }}" />
+
+<meta property="og:title" content="{{ meta_title }}" />
+<meta property="og:description" content="{{ desc | safe }}" />
+<meta property="og:type" content="{{ 'article' if page is defined else 'website' }}" />
+<meta property="og:url" content="{{ meta_url }}" />
+<meta property="og:image" content="{{ image }}" />
+{%- if page is defined %}
+<meta property="article:section" content="{{ page.components[0] if page.components | length > 1 else '' }}" />
+{%- if page.date %}
+<meta property="article:published_time" content="{{ page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" />
+<meta property="article:modified_time" content="{{ (page.updated or page.date) | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" />
+{%- endif %}
+{%- endif %}
+<meta property="og:site_name" content="{{ config.title }}" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ image }}" />
+<meta name="twitter:title" content="{{ meta_title }}" />
+<meta name="twitter:description" content="{{ desc | safe }}" />
+
+<meta itemprop="name" content="{{ meta_title }}">
+<meta itemprop="description" content="{{ desc | safe }}">
+{%- if page is defined %}
+{%- if page.date %}
+<meta itemprop="datePublished" content="{{ page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" />
+<meta itemprop="dateModified" content="{{ (page.updated or page.date) | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" />
+{%- endif %}
+<meta itemprop="wordCount" content="{{ page.word_count }}">
+<meta itemprop="image" content="{{ image }}" />
+<meta itemprop="keywords" content="{{ keywords }}" />
+{%- endif %}

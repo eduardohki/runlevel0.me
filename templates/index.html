@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block feed %}<link rel="alternate" type="application/rss+xml" href="{{ get_url(path='index.xml') }}" title="{{ config.title }}" />{% endblock feed %}
+
+{% block main %}
+{#- External links written in Markdown open in a new tab here, with a note for screen readers.
+    Links within the site, anchors, email links and links written as HTML stay as they are. -#}
+{{ section.content | regex_replace(pattern=`<a href="(https?://[^"]+)">(.*?)</a>`, rep=`<a href="$1" target="_blank" rel="noopener noreferrer">$2<span class="sr-only"> (opens in a new tab)</span></a>`) | safe }}
+{% endblock main %}

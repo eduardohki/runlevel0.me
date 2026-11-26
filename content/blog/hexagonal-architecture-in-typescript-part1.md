@@ -1,16 +1,21 @@
 +++
 title = "Hexagonal Architecture in TypeScript, Part 1"
-date = "2024-02-29T15:08:51+01:00"
+date = 2024-02-29T15:08:51+01:00
+# Keeps the URL the Hugo site used (taken from the title).
+slug = "hexagonal-architecture-in-typescript-part-1"
 
+[taxonomies]
 categories = ['Software Engineering']
-series = ['Hexagonal Architecture in TypeScript']
 tags = ['BDD', 'TDD', 'TypeScript']
+
+[extra]
+series = ['Hexagonal Architecture in TypeScript']
 +++
 
 This article is comprised of multiple parts:
 
 * Part 1: Introduction and First Use-Case
-* [Part 2: In-Memory Repository]({{< ref "hexagonal-architecture-in-typescript-part2.md" >}})
+* [Part 2: In-Memory Repository](@/blog/hexagonal-architecture-in-typescript-part2.md)
 
 ## Introduction
 
@@ -40,7 +45,7 @@ For this series I'm conceiving a fictional team building a Project Collaboration
 
 We do, however, have a defined set of use-cases to start building:
 
-```feature
+```gherkin
 Feature: As a Project Manager, I want to manage new and existing Projects
 
   Scenario: Creating a new Project
@@ -287,10 +292,10 @@ Now our first scenario/use-case is implemented with all tests passing. If you lo
 
 The code written here can be found on [GitHub](https://github.com/eduardohki/project-collab-platform/tree/part-1).
 
-## What's next?
+## What's next? {#whats-next}
 
 So far we implemented our first use-case using TDD, but the case for Hexagonal Architecture is not clear yet. In the next article in this series we'll see how to implement a repository to store the *Projects* created in this use-case. The repository will be defined by an interface (or type, in the case of TypeScript) and an in-memory implementation will be created for use in tests.
 
 See you in the next article!
 
-[Continue to Part 2: In-Memory Repository]({{< ref "hexagonal-architecture-in-typescript-part2.md" >}})
+[Continue to Part 2: In-Memory Repository](@/blog/hexagonal-architecture-in-typescript-part2.md)
