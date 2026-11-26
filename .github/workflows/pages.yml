@@ -23,7 +23,7 @@ jobs:
   build:
     name: Build
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
     env:
@@ -65,7 +65,7 @@ jobs:
     name: Deploy
     needs: build
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       pages: write # publish the uploaded artifact to GitHub Pages
       id-token: write # OIDC token deploy-pages uses to prove the deployment's origin
