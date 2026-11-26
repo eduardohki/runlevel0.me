@@ -3,7 +3,10 @@
 
 {% block title %}{{ term.name }}{% endblock title %}
 
-{% block feed %}<link rel="alternate" type="application/rss+xml" href="{{ term.permalink }}index.xml" title="{{ config.title }}" />{% endblock feed %}
+{% block feed %}
+  <link rel="alternate" type="application/atom+xml" href="{{ term.permalink }}atom.xml" title="{{ config.title }} - {{ term.name }}" />
+  <link rel="alternate" type="application/rss+xml" href="{{ term.permalink }}index.xml" title="{{ config.title }} - {{ term.name }}" />
+{%- endblock feed %}
 
 {% block main %}
 <content>

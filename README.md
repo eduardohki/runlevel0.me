@@ -14,7 +14,7 @@ zola build   # writes the site to public/
 - `static/`: files copied as-is (images, favicons, the PDF CV).
 
 Pushes to `main` deploy to GitHub Pages via `.github/workflows/pages.yml`.
-Feeds: RSS (`index.xml`) for the whole site, the blog, and each tag and category.
+Feeds: Atom (`atom.xml`) and RSS (`index.xml`) for the whole site, the blog, and each tag and category.
 
 ## License
 

@@ -16,6 +16,9 @@
   <title>{% block title %}{% endblock title %} | {{ config.title }}</title>
   {%- include "partials/seo.html" %}
   <meta name="referrer" content="no-referrer-when-downgrade" />
+  {#- Feed autodiscovery: the site's feeds everywhere, plus the blog's or a tag's own feeds on those pages. #}
+  <link rel="alternate" type="application/atom+xml" href="{{ get_url(path='atom.xml') }}" title="{{ config.title }}" />
+  <link rel="alternate" type="application/rss+xml" href="{{ get_url(path='index.xml') }}" title="{{ config.title }}" />
   {% block feed %}{% endblock feed %}
   {%- include "partials/style.html" %}
 </head>

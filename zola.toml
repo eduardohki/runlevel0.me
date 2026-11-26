@@ -5,10 +5,11 @@ description = "Eduardo Hernacki"
 default_language = "en-us"
 author = "Eduardo Hernacki"
 
-# RSS feeds at the URLs the Hugo site used: /index.xml, /blog/index.xml and one per tag/category.
-# A non-default filename needs its own template, see templates/index.xml.
+# Atom feeds (atom.xml, Zola's built-in template) plus RSS feeds at the URLs the Hugo site
+# used (index.xml, see templates/index.xml). Both exist for the whole site, the blog
+# (blog/_index.md) and each tag and category.
 generate_feeds = true
-feed_filenames = ["index.xml"]
+feed_filenames = ["atom.xml", "index.xml"]
 
 # HTML minification stays off: it drops the spaces between the nav links, which changes their spacing.
 

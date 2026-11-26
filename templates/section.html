@@ -2,7 +2,10 @@
 
 {% block title %}{{ section.title }}{% endblock title %}
 
-{% block feed %}<link rel="alternate" type="application/rss+xml" href="{{ section.permalink }}index.xml" title="{{ config.title }}" />{% endblock feed %}
+{% block feed %}
+  <link rel="alternate" type="application/atom+xml" href="{{ section.permalink }}atom.xml" title="{{ config.title }} - {{ section.title }}" />
+  <link rel="alternate" type="application/rss+xml" href="{{ section.permalink }}index.xml" title="{{ config.title }} - {{ section.title }}" />
+{%- endblock feed %}
 
 {% block main %}
 <content>
