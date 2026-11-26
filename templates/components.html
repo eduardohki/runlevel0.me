@@ -1,0 +1,41 @@
+{% component post_list(pages: array) %}
+  <ul class="blog-posts">
+    {% for p in pages %}
+    <li>
+      <span>
+        <i>
+          <time datetime='{{ p.date | date(format="%Y-%m-%d") }}' pubdate>
+            {{ p.date | date(format="%d %b, %Y") }}
+          </time>
+        </i>
+      </span>
+      <a href="{{ p.permalink }}">{{ p.title }}</a>
+    </li>
+    {% else %}
+    <li>
+      No posts yet
+    </li>
+    {% endfor %}
+  </ul>
+{% endcomponent post_list %}
+
+{% component cv_duration(months: integer) -%}
+  {%- set y = months // 12 -%}{%- set m = months % 12 -%}
+  {%- if y > 0 %}{{ y }} yr{% if y > 1 %}s{% endif %}{% endif -%}
+  {%- if y > 0 and m > 0 %} {% endif -%}
+  {%- if m > 0 %}{{ m }} mo{% endif -%}
+{%- endcomponent cv_duration %}
+
+{% component cv_month(ym: string) -%}
+  {%- set names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] -%}
+  {%- set parts = ym | split(pat="-") -%}
+  {{ names[(parts[1] | int) - 1] }} {{ parts[0] }}
+{%- endcomponent cv_month %}
+
+{#- Written as character references (&#115;...) to keep the address from scrapers.
+    Only covers lowercase addresses. -#}
+{% component email_link(address: string) -%}
+  {%- set codes = {"a": 97, "b": 98, "c": 99, "d": 100, "e": 101, "f": 102, "g": 103, "h": 104, "i": 105, "j": 106, "k": 107, "l": 108, "m": 109, "n": 110, "o": 111, "p": 112, "q": 113, "r": 114, "s": 115, "t": 116, "u": 117, "v": 118, "w": 119, "x": 120, "y": 121, "z": 122, "0": 48, "1": 49, "2": 50, "3": 51, "4": 52, "5": 53, "6": 54, "7": 55, "8": 56, "9": 57, "@": 64, ".": 46, "-": 45, "_": 95, "+": 43} -%}
+  {%- set encoded -%}{% for c in address %}&#{{ codes[c] }};{% endfor %}{%- endset -%}
+  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;{{ encoded | safe }}">{{ encoded | safe }}</a>
+{%- endcomponent email_link %}

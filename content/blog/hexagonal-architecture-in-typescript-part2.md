@@ -1,15 +1,19 @@
 +++
 title = "Hexagonal Architecture in TypeScript, Part 2"
-date = "2024-03-05T15:54:01+01:00"
+date = 2024-03-05T15:54:01+01:00
+slug = "hexagonal-architecture-in-typescript-part-2"
 
+[taxonomies]
 categories = ['Software Engineering']
-series = ['Hexagonal Architecture in TypeScript']
 tags = ['BDD', 'TDD', 'TypeScript']
+
+[extra]
+series = ['Hexagonal Architecture in TypeScript']
 +++
 
 This article is comprised of multiple parts:
 
-* [Part 1: Introduction and First Use-Case]({{< ref "hexagonal-architecture-in-typescript-part1.md" >}})
+* [Part 1: Introduction and First Use-Case](@/blog/hexagonal-architecture-in-typescript-part1.md)
 * Part 2: In-Memory Repository
 
 ## Introduction
@@ -204,7 +208,7 @@ The new test should now pass, with all tests being green.
 
 The code written in this part 2 can be found on [GitHub](https://github.com/eduardohki/project-collab-platform/tree/part-2).
 
-## What's next?
+## What's next? {#whats-next}
 
 So far we have implemented a Repository to store the projects created in this scenario/use-case and adjusted the tests accordingly. Little by little, the general idea of Hexagonal Architecture is taking shape.
 

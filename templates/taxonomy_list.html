@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ taxonomy.name | capitalize }}{% endblock title %}
+
+{% block main %}
+<content>
+  <h1 class="sr-only">{{ taxonomy.name | capitalize }}</h1>
+  <ul class="blog-posts">
+    {% for t in terms %}
+    <li><a href="{{ t.permalink }}">#{{ t.name }}</a></li>
+    {% endfor %}
+  </ul>
+</content>
+{% endblock main %}

@@ -1,0 +1,12 @@
+{#- The nav always comes first, so it stays in the same place on every page. -#}
+<nav>{% include "partials/nav.html" %}</nav>
+{% if not hero %}
+<a href="{{ get_url(path="@/_index.md") }}" class="title">
+  <span class="site-title">{{ config.title }}</span>
+</a>
+{% endif %}
+{% if config.mode == "build" %}
+{#- Async, so a slow or unreachable analytics host never holds back the page.
+    If a blocker stops the script, onload never fires and tracking is skipped. #}
+<script async src="https://getinsights.io/js/insights.js" onload="insights.init('{{ config.extra.insights_id }}'); insights.trackPages();"></script>
+{% endif %}

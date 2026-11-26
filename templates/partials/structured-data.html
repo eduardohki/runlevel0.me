@@ -1,0 +1,46 @@
+{#- `</` is escaped so no value can end the script element. -#}
+{%- set person_id = config.base_url ~ "/#person" -%}
+{%- set p = config.extra.person -%}
+{%- if section is defined and section.path == "/" -%}
+  {%- set data = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": person_id,
+    "name": config.author,
+    "jobTitle": p.job_title,
+    "url": config.base_url ~ "/",
+    "image": get_url(path=config.extra.image.path),
+    "address": {"@type": "PostalAddress", "addressLocality": p.locality, "addressCountry": p.country},
+    "knowsLanguage": p.languages,
+    "sameAs": p.same_as,
+  } -%}
+{%- elif page is defined and page.extra?.hero -%}
+  {%- set data = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": page.permalink,
+    "name": page.title,
+    "description": page.description,
+    "mainEntity": {"@id": person_id, "@type": "Person", "name": config.author},
+  } -%}
+{%- elif page is defined and page.date -%}
+  {#- `desc` is HTML-escaped for the meta tags; JSON needs the plain text back. -#}
+  {%- set text = desc | replace(from="&quot;", to='"') | replace(from="&#x27;", to="'") | replace(from="&lt;", to="<") | replace(from="&gt;", to=">") | replace(from="&amp;", to="&") -%}
+  {%- set data = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": page.title,
+    "description": text,
+    "url": page.permalink,
+    "mainEntityOfPage": page.permalink,
+    "datePublished": page.date | date(format="%Y-%m-%dT%H:%M:%S%:z"),
+    "dateModified": (page.updated or page.date) | date(format="%Y-%m-%dT%H:%M:%S%:z"),
+    "wordCount": page.word_count,
+    "keywords": page.taxonomies?.tags or [],
+    "image": get_url(path=config.extra.image.path),
+    "author": {"@id": person_id, "@type": "Person", "name": config.author, "url": config.base_url ~ "/"},
+  } -%}
+{%- endif -%}
+{%- if data is defined %}
+<script type="application/ld+json">{{ data | json_encode | replace(from="</", to="<\\/") | safe }}</script>
+{%- endif %}

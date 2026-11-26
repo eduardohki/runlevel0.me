@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block main %}
+{% block page_header %}{% endblock page_header %}
+<content>
+  {{ page.content | safe }}
+</content>
+<p>
+  {% for tag in page.taxonomies?.tags or [] %}
+  <a href="{{ get_taxonomy_url(kind='tags', term=tag) }}">#{{ tag }}</a>
+  {% endfor %}
+</p>
+{% endblock main %}

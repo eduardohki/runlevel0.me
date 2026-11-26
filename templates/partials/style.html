@@ -1,16 +1,15 @@
 <style>
-  /* Colour tokens shared by every page. Dark values apply on screen only,
-     so a page printed from dark mode still comes out dark-on-white. */
+  /* Dark values apply on screen only, so printing from dark mode still gives dark-on-white. */
   :root {
     --bg: #f2f3f4;
-    --ink: #383838;          /* body text and headings */
-    --muted: #6b6b6b;        /* dates, captions, attributions */
-    --line: #d9dbe0;         /* dividers and outlines */
+    --ink: #383838;
+    --muted: #6b6b6b;
+    --line: #d9dbe0;
     --card: #ffffff;
-    --card-edge: #c4c9d4;    /* neutral left edge of cards and quotes */
+    --card-edge: #c4c9d4;
     --code-bg: #e4e6e8;
-    --link: #324ab2;         /* solid link colour where the gradient can't show */
-    --link-from: #324ab2;    /* the link gradient's two ends */
+    --link: #324ab2;         /* where the gradient can't show */
+    --link-from: #324ab2;
     --link-to: #2e2787;
     --link-grad: linear-gradient(135deg, var(--link-from) 0%, var(--link-to) 75%);
   }
@@ -56,8 +55,7 @@
     color: var(--ink);
   }
 
-  /* Headings: tighter leading than body text, and more space above than below,
-     so each heading belongs to the section it starts. */
+  /* More space above headings than below, so each belongs to the section it starts. */
   h1, h2, h3, h4 { line-height: 1.25; text-wrap: balance; }
   main h2, main h3 { margin: 1.5em 0 0.5em; }
   p, li, blockquote { text-wrap: pretty; }
@@ -80,7 +78,6 @@
     }
   }
 
-  /* Keyboard focus in the link colour, clear of the text it surrounds. */
   :focus-visible {
     outline: 2px solid var(--link);
     outline-offset: 2px;
@@ -97,7 +94,6 @@
     font-weight: 400;
   }
 
-  /* Text for screen readers only, e.g. '(opens in a new tab)'. */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -108,10 +104,9 @@
   }
 
   /* Code blocks: lift Monokai's comment grey and keyword pink slightly so they meet contrast. */
-  pre span[style*="color:#75715e"] { color: #9a957e !important; }
-  pre span[style*="color:#f92672"] { color: #fb4b8b !important; }
+  pre span[style*="#88846F"] { color: #9a957e !important; }
+  pre span[style*="#F92672"] { color: #fb4b8b !important; }
 
-  /* The nav sits at the top of every page; keep some room above it. */
   header > nav:first-child { margin-top: 1.5em; }
 
   /* The site title used to be an h2; keep its look without making it a heading. */
@@ -181,14 +176,30 @@
     overflow-x: auto;
   }
 
-  div.highlight pre {
+  pre.giallo {
     background-color: initial;
     color: initial;
+    tab-size: 4;
   }
 
-  div.highlight code {
+  /* Keep the plain Monokai look: no underlined types or italic parameters. */
+  pre.giallo span {
+    text-decoration: none !important;
+    font-style: normal !important;
+  }
+
+  pre.giallo code {
     background-color: #232428;
     color: unset;
+  }
+
+  /* One span per line from the highlighter (Giallo). Top-aligned, so an empty line is
+     exactly one line tall instead of also taking the descender space below the baseline. */
+  .giallo-l {
+    display: inline-block;
+    min-height: 1lh;
+    width: 100%;
+    vertical-align: top;
   }
 
   blockquote {
@@ -202,7 +213,6 @@
     text-align: center;
   }
 
-  /* blog posts */
   ul.blog-posts {
     list-style-type: none;
     padding: unset;
@@ -217,7 +227,7 @@
   }
 
   @media screen and (prefers-color-scheme: dark) {
-    div.highlight code {
+    pre.giallo code {
       background-color: #17181a;
     }
   }

@@ -1,0 +1,10 @@
+{%- set since = config.extra.since -%}
+{%- set year = now() | date(format="%Y") | int %}
+<p style="font-size: 0.9em">
+Copyright &copy; {{ since }}{% if year != since %}-{{ year }}{% endif %} {{ config.author }}. | <a href='{{ get_url(path="@/imprint.md") }}'>Imprint</a>
+| <a href='{{ get_url(path="index.xml") }}' type="application/rss+xml">RSS</a>
+| <a href='{{ get_url(path="atom.xml") }}' type="application/atom+xml">Atom</a>
+</p>
+<p style="font-size: 0.8em">
+The content on this website is licensed under {% if hero %}<a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-ND 4.0<span class="sr-only"> (opens in a new tab)</span></a>{% else %}<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>{% endif %}.
+</p>

@@ -1,11 +1,15 @@
 +++
 title = "Essential Tools and Practices for Effective IT Platforms"
-date = "2025-02-20T12:00:00+01:00"
-
 description = "A non-exhaustive list of tools every platform should provide to its internal users, and of practices that every technical organization should consider adopting."
+date = 2025-02-20T12:00:00+01:00
+slug = "essential-tools-and-practices-for-effective-it-platforms"
+
+[taxonomies]
 categories = ['Software Engineering', 'Platform Engineering']
-series = ['Engineering Practices']
 tags = ['Practices', 'Tools']
+
+[extra]
+series = ['Engineering Practices']
 +++
 
 ## Introduction
@@ -61,7 +65,7 @@ Solutions I have used that meet these requirements are:
 
 ## Essential Practices
 
-### Product Teams should have end-to-end ownership of their application(s) lifecycle
+### Product Teams should have end-to-end ownership of their application(s) lifecycle {#product-teams-should-have-end-to-end-ownership-of-their-applications-lifecycle}
 
 This includes owning their code, databases, monitoring, patching and infrastructure.
 

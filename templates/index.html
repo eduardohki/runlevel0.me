@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block main %}
+{#- Zola has no link render hooks: rewrite external Markdown links to open in a new tab.
+    Links written as HTML don't match and stay as they are. -#}
+{{ section.content | regex_replace(pattern=`<a href="(https?://[^"]+)">(.*?)</a>`, rep=`<a href="$1" target="_blank" rel="noopener noreferrer">$2<span class="sr-only"> (opens in a new tab)</span></a>`) | safe }}
+{% endblock main %}

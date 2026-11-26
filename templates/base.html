@@ -1,0 +1,37 @@
+{#- Derived from the hugo-bearblog theme (MIT License, see THIRD-PARTY-NOTICES.md).
+    `extra.hero` marks pages (home, CV) that show the name in their own hero: no site title
+    under the nav, and external links open in a new tab. -#}
+{%- set hero = page?.extra?.hero or section?.extra?.hero or false -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f2f3f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1d1f27" media="(prefers-color-scheme: dark)" />
+  {%- include "partials/favicon.html" %}
+  <title>{% block title %}{% endblock title %} | {{ config.title }}</title>
+  {%- include "partials/seo.html" %}
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <link rel="alternate" type="application/atom+xml" href="{{ get_url(path='atom.xml') }}" title="{{ config.title }}" />
+  <link rel="alternate" type="application/rss+xml" href="{{ get_url(path='index.xml') }}" title="{{ config.title }}" />
+  {% block feed %}{% endblock feed %}
+  {%- include "partials/style.html" %}
+</head>
+
+<body>
+  <header>
+    {%- include "partials/header.html" %}
+  </header>
+  <main>
+    {%- block main %}{% endblock main %}
+  </main>
+  <footer>
+    {%- include "partials/footer.html" %}
+  </footer>
+</body>
+
+</html>

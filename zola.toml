@@ -1,0 +1,48 @@
+base_url = "https://runlevel0.me"
+title = "Eduardo Hernacki"
+description = "Eduardo Hernacki"
+default_language = "en-us"
+author = "Eduardo Hernacki"
+
+# index.xml keeps the RSS URLs of the old Hugo site.
+generate_feeds = true
+feed_filenames = ["atom.xml", "index.xml"]
+
+# Minifying drops the spaces between the nav links, which changes their spacing.
+minify_html = false
+
+taxonomies = [
+  { name = "tags", feed = true },
+  { name = "categories", feed = true },
+]
+
+[markdown]
+smart_punctuation = true
+external_links_external = false
+
+[markdown.highlighting]
+theme = "monokai"
+error_on_missing_language = true
+
+[link_checker]
+# Bot protection answers automated requests with 403, though the pages work in a browser.
+skip_prefixes = [
+  "https://www.ppro.com",
+]
+
+[extra]
+since = 2024
+image = { path = "images/profile-picture.jpg", width = 460, height = 460, alt = "Eduardo Hernacki, Software Engineer & Technical Leader" }
+insights_id = "AZklKKe2O7L_qE6W"
+
+[extra.person]
+job_title = "Software Engineer & Technical Leader"
+locality = "Munich"
+country = "DE"
+languages = ["de", "en", "pt"]
+same_as = [
+  "https://linkedin.com/in/eduardohki",
+  "https://github.com/eduardohki",
+  "https://genserver.social/runlevel0",
+  "https://bsky.app/profile/runlevel0.me",
+]

@@ -1,7 +1,9 @@
 +++
 title = "Home"
 description = "Software Engineer & Technical Leader in Munich."
-url = "/"
+
+[extra]
+hero = true
 +++
 
 <style>
@@ -18,7 +20,7 @@ url = "/"
     }
   }
 
-  /* Shared look with the CV page: soft cards with a neutral edge (colour tokens live in style.html). */
+  /* Same card look as the CV page. */
   main blockquote, .home-card {
     background: var(--card); border: 1px solid transparent; border-left: 4px solid var(--card-edge);
     border-radius: 10px; padding: 0.9rem 1.1rem; margin: 0.9rem 0; font-style: normal;
@@ -76,11 +78,11 @@ Over more than a decade in regulated industries, I've learned that most software
 >
 > --- **Steffen Glomb**, former Chief Product & Technology Officer, [BetterDoc](https://www.betterdoc.org/)
 
-## What I'm Working On
+## What I'm Working On {#what-im-working-on}
 
 These days I help engineering teams at a financial services client make AI agents part of everyday software delivery, building the tooling with them as it grew from zero to dozens of developers across three engineering groups. What I've learned is that AI amplifies whatever process it lands in, so the ways of working must adapt to its new constraints and risks with clear requirements, the right context and firm limits on agent autonomy, since judgment and discernment are what only people bring.
 
-## The BEAM & Functional Programming
+## The BEAM & Functional Programming {#the-beam--functional-programming}
 
 I prefer functional programming, and I lean towards [Gleam](https://gleam.run) for modeling business logic and building web applications.
 

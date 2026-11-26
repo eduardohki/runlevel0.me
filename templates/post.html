@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+
+{% block page_header %}
+<h1>{{ page.title }}</h1>
+<p>
+  <i>
+    <time datetime='{{ page.date | date(format="%Y-%m-%d") }}' pubdate>
+      {{ page.date | date(format="%d %b, %Y") }}
+    </time>
+  </i>
+</p>
+{% endblock page_header %}
