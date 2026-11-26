@@ -9,7 +9,6 @@
 
 {% block main %}
 <content>
-  {#- A page heading for screen readers; the nav already says where we are. #}
   <h1 class="sr-only">{{ section.title }}</h1>
   {{ <post_list pages={section.pages} /> }}
   <small>

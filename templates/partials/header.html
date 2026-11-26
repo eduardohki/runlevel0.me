@@ -1,5 +1,4 @@
-{#- The nav always comes first, so it stays in the same place on every page.
-    Hero pages (home and CV) show the name themselves; other pages show it under the nav. -#}
+{#- The nav always comes first, so it stays in the same place on every page. -#}
 <nav>{% include "partials/nav.html" %}</nav>
 {% if not hero %}
 <a href="{{ get_url(path="@/_index.md") }}" class="title">

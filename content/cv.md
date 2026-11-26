@@ -1,11 +1,10 @@
 +++
 title = "CV"
 description = "CV of Eduardo Hernacki, Software Engineer & Technical Leader in Munich."
-# The page is generated from data/cv.yaml; the text below is the summary at the top.
+# The page comes from data/cv.yaml; the text below is only its summary.
 template = "cv.html"
 
 [extra]
-# Shows the name in its own hero; external links open in a new tab.
 hero = true
 +++
 

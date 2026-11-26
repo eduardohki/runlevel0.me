@@ -2,7 +2,6 @@
 title = "Essential Tools and Practices for Effective IT Platforms"
 description = "A non-exhaustive list of tools every platform should provide to its internal users, and of practices that every technical organization should consider adopting."
 date = 2025-02-20T12:00:00+01:00
-# Keeps the URL the Hugo site used (taken from the title).
 slug = "essential-tools-and-practices-for-effective-it-platforms"
 
 [taxonomies]

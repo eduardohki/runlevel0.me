@@ -3,7 +3,6 @@ title = "Home"
 description = "Software Engineer & Technical Leader in Munich."
 
 [extra]
-# Shows the name in its own hero; external links open in a new tab.
 hero = true
 +++
 
@@ -21,7 +20,7 @@ hero = true
     }
   }
 
-  /* Shared look with the CV page: soft cards with a neutral edge (colour tokens live in style.html). */
+  /* Same card look as the CV page. */
   main blockquote, .home-card {
     background: var(--card); border: 1px solid transparent; border-left: 4px solid var(--card-edge);
     border-radius: 10px; padding: 0.9rem 1.1rem; margin: 0.9rem 0; font-style: normal;

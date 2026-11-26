@@ -1,5 +1,4 @@
-# Single source of truth for the CV page (/cv/).
-# Edit here; the page is generated from this file.
+# Source of the CV page (/cv/).
 #
 # Per entry:
 #   start / end   YYYY-MM (end: present for the current role). Drives the timeline bar

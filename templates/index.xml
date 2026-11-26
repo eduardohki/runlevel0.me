@@ -1,4 +1,4 @@
-{#- Zola's built-in rss.xml (v0.23.6), saved as index.xml so feeds keep the URLs the Hugo site used. -#}
+{#- Zola's built-in rss.xml (v0.23.6): a feed named index.xml needs its own template. -#}
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>

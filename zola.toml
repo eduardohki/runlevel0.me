@@ -1,17 +1,15 @@
 base_url = "https://runlevel0.me"
 title = "Eduardo Hernacki"
-# Fallback description for pages and sections without their own (meta tags and feeds).
 description = "Eduardo Hernacki"
 default_language = "en-us"
 author = "Eduardo Hernacki"
 
-# Atom feeds (atom.xml, Zola's built-in template) plus RSS feeds at the URLs the Hugo site
-# used (index.xml, see templates/index.xml). Both exist for the whole site, the blog
-# (blog/_index.md) and each tag and category.
+# index.xml keeps the RSS URLs of the old Hugo site.
 generate_feeds = true
 feed_filenames = ["atom.xml", "index.xml"]
 
-# HTML minification stays off: it drops the spaces between the nav links, which changes their spacing.
+# Minifying drops the spaces between the nav links, which changes their spacing.
+minify_html = false
 
 taxonomies = [
   { name = "tags", feed = true },
@@ -19,19 +17,32 @@ taxonomies = [
 ]
 
 [markdown]
-# Curly quotes and dashes, as Hugo's typographer produced.
 smart_punctuation = true
-# Plain links: no rel="external". The home page opens external links in a new tab in its template.
 external_links_external = false
 
 [markdown.highlighting]
 theme = "monokai"
 error_on_missing_language = true
 
+[link_checker]
+# Bot protection answers automated requests with 403, though the pages work in a browser.
+skip_prefixes = [
+  "https://www.ppro.com",
+]
+
 [extra]
-# First year in the footer's copyright line.
 since = 2024
-# Preview image for link cards (Open Graph, Twitter, schema.org).
-image = "images/favicon.png"
-# getinsights.io project; the script is left out under `zola serve`.
+image = { path = "images/profile-picture.jpg", width = 460, height = 460, alt = "Eduardo Hernacki, Software Engineer & Technical Leader" }
 insights_id = "AZklKKe2O7L_qE6W"
+
+[extra.person]
+job_title = "Software Engineer & Technical Leader"
+locality = "Munich"
+country = "DE"
+languages = ["de", "en", "pt"]
+same_as = [
+  "https://linkedin.com/in/eduardohki",
+  "https://github.com/eduardohki",
+  "https://genserver.social/runlevel0",
+  "https://bsky.app/profile/runlevel0.me",
+]

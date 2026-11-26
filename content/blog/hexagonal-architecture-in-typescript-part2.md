@@ -1,7 +1,6 @@
 +++
 title = "Hexagonal Architecture in TypeScript, Part 2"
 date = 2024-03-05T15:54:01+01:00
-# Keeps the URL the Hugo site used (taken from the title).
 slug = "hexagonal-architecture-in-typescript-part-2"
 
 [taxonomies]

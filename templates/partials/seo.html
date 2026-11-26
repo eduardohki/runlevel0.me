@@ -1,16 +1,13 @@
-{#- Meta tags for search engines and link previews (Open Graph, Twitter, schema.org),
-    matching what the Hugo theme generated. All values are HTML-escaped before `desc`
-    is printed with `safe`. -#}
-{%- set image = get_url(path=config.extra.image) -%}
+{#- `desc` is always HTML-escaped here, so it is printed with `safe`. -#}
+{%- set image = config.extra.image -%}
 {%- if page is defined -%}
   {%- set meta_title = page.title -%}
   {%- set meta_url = page.permalink -%}
   {%- if page.description -%}
     {%- set desc = page.description | escape_html -%}
   {%- else -%}
-    {#- Without a description, use the start of the text: tags stripped, cut after the
-        sentence that reaches 70 words (Hugo's automatic summary). The rendered content
-        is already HTML-escaped, so the result is safe inside an attribute. -#}
+    {#- Hugo's automatic summary: plain text, cut after the sentence reaching 70 words.
+        The rendered content is already escaped, so no further escaping is needed. -#}
     {%- set plain = page.content | regex_replace(pattern=`<[^>]*>`, rep=` `) | regex_replace(pattern=`[[:space:]]+`, rep=` `) | trim -%}
     {%- set desc = plain | regex_replace(pattern=`^((?:[^ ]+ ){70}[^.!?]*[.!?]) .*$`, rep=`$1`) -%}
   {%- endif -%}
@@ -47,7 +44,10 @@
 <meta property="og:description" content="{{ desc | safe }}" />
 <meta property="og:type" content="{{ 'article' if page is defined else 'website' }}" />
 <meta property="og:url" content="{{ meta_url }}" />
-<meta property="og:image" content="{{ image }}" />
+<meta property="og:image" content="{{ get_url(path=image.path) }}" />
+<meta property="og:image:width" content="{{ image.width }}" />
+<meta property="og:image:height" content="{{ image.height }}" />
+<meta property="og:image:alt" content="{{ image.alt }}" />
 {%- if page is defined %}
 <meta property="article:section" content="{{ page.components[0] if page.components | length > 1 else '' }}" />
 {%- if page.date %}
@@ -57,19 +57,14 @@
 {%- endif %}
 <meta property="og:site_name" content="{{ config.title }}" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="{{ image }}" />
+{#- The small card: the preview image is a square photo, which large cards would crop. #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="{{ get_url(path=image.path) }}" />
+<meta name="twitter:image:alt" content="{{ image.alt }}" />
 <meta name="twitter:title" content="{{ meta_title }}" />
 <meta name="twitter:description" content="{{ desc | safe }}" />
 
-<meta itemprop="name" content="{{ meta_title }}">
-<meta itemprop="description" content="{{ desc | safe }}">
-{%- if page is defined %}
-{%- if page.date %}
-<meta itemprop="datePublished" content="{{ page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" />
-<meta itemprop="dateModified" content="{{ (page.updated or page.date) | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" />
+{%- if terms is defined or page is defined or section is defined or term is defined %}
+<link rel="canonical" href="{{ meta_url }}" />
 {%- endif %}
-<meta itemprop="wordCount" content="{{ page.word_count }}">
-<meta itemprop="image" content="{{ image }}" />
-<meta itemprop="keywords" content="{{ keywords }}" />
-{%- endif %}
+{%- include "partials/structured-data.html" %}
